@@ -29,7 +29,9 @@ export default {
                 { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: '', id: 6 },
                 { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: '', id: 6 },
                 { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: '', id: 6 },
+                { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: '', id: 6 },
             ]
+
 
 
         }
