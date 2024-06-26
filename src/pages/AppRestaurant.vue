@@ -21,7 +21,7 @@ export default {
     data() {
         return {
             dishes: [
-                { name: 'Spagetti', description: 'Buoni spagettoni', price: '12', available: true, image: '', id: 1 },
+                { name: 'Spagetti', description: 'Buoni spagettoni', price: '12', available: true, image: '', id: 10 },
                 { name: 'Pizza', description: 'Buona pizza', price: '8', available: true, image: '', id: 2 },
                 { name: 'Bistecca', description: 'Buona bisteccona', price: '20', available: true, image: '', id: 3 },
                 { name: 'Zuppa', description: 'Buona zuppa', price: '5', available: true, image: '', id: 4 },
