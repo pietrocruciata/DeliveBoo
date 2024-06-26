@@ -27,7 +27,9 @@ export default {
                 { name: 'Zuppa', description: 'Buona zuppa', price: '5', available: true, image: '', id: 4 },
                 { name: 'Piatto freddo', description: 'Piatttone buonone', price: '18', available: true, image: '', id: 5 },
                 { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: '', id: 6 },
+                { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: '', id: 6 },
             ]
+
         }
     }
 
