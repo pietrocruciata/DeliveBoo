@@ -1,6 +1,16 @@
 <template>
-    <div>
-        <p>header</p>
+    <div class="container">
+        <div class="row">
+            <div>
+                home
+            </div>
+            <div>
+                accedi
+            </div>
+            <div>
+                registrati
+            </div>
+        </div>
     </div>
 </template>
 
