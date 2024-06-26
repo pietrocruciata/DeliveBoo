@@ -1,7 +1,6 @@
 <template>
     <div>
         <p>main</p>
-        <p>PENI</p>
     </div>
 </template>
 

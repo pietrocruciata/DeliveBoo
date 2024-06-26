@@ -1,16 +1,25 @@
 <template>
-   
-            <div class="d-flex bg_cream p-3 justify-content-end gap-5 ">
-                <div>
-                    <RouterLink to="/">Home</RouterLink>
-                </div>
-                <div>
-                    <a href="#">Accedi</a>
-                </div>
-                <div class="me-5">
-                   <a href="#">registrati</a> 
-                </div>
+
+    <div class="d-flex bg_cream  p-3 justify-content-around align-items-center">
+
+
+        <div class="c-orange d-flex">
+            logo
+            <h1 class="d-none d-md-inline-block">DeliveBoo</h1>
+        </div>
+
+        <div class="d-flex  gap-md-5 gap-3 font-icon c-grey">
+            <div >
+                <RouterLink to="/"><font-awesome-icon :icon="['fas', 'house']" /></RouterLink>
             </div>
+            <div >
+                <a href="#"><font-awesome-icon :icon="['fas', 'user']" /></a>
+            </div>
+            <div >
+                <a href="#"><font-awesome-icon :icon="['fas', 'cart-shopping']" /></a>
+            </div>
+        </div>
+    </div>
 
 </template>
 
@@ -23,7 +32,32 @@ export default {
 <style lang="scss" scoped>
 @use '../style/partials/variables' as *;
 
-.bg_cream{
+.bg_cream {
     background-color: $brand-cream
 }
+
+.c-orange {
+    color: $brand-orange
+}
+
+
+.button-orange {
+    background-color: $brand-orange;
+    text-align: center;
+    padding: 5px;
+    width: 100px;
+    border: 1px solid rgb(141, 100, 23);
+    border-radius: 20px;
+}
+
+.font-icon{
+    font-size: 20px;
+    color: $brand-grey;
+
+    &>*:hover{
+        color:$brand-orange
+    };
+}
+
+
 </style>
