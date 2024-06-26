@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1  class="main">home</h1>
-        <RouterLink to="/restaurant">restaurant</RouterLink>
+        <RouterLink to="/restaurant">RESt</RouterLink>
     </div>
 </template>
 
