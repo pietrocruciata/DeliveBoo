@@ -21,16 +21,12 @@ export default {
     data() {
         return {
             dishes: [
-                { name: 'Spagetti', description: 'Buoni spagettoni', price: '12', available: true, image: '', id: 10 },
-                { name: 'Pizza', description: 'Buona pizza', price: '8', available: true, image: '', id: 2 },
-                { name: 'Bistecca', description: 'Buona bisteccona', price: '20', available: true, image: '', id: 3 },
-                { name: 'Zuppa', description: 'Buona zuppa', price: '5', available: true, image: '', id: 4 },
-                { name: 'Piatto freddo', description: 'Piatttone buonone', price: '18', available: true, image: '', id: 5 },
-                { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: '', id: 6 },
-                { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: '', id: 6 },
-                { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: '', id: 6 },
-                { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: '', id: 6 },
-                { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: '', id: 6 },
+                { name: 'Spagetti', description: 'Buoni spagettoni', price: '12', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 1 },
+                { name: 'Pizza', description: 'Buona pizza', price: '8', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 2 },
+                { name: 'Bistecca', description: 'Buona bisteccona', price: '20', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 3 },
+                { name: 'Zuppa', description: 'Buona zuppa', price: '5', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 4 },
+                { name: 'Piatto freddo', description: 'Piatttone buonone', price: '18', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 5 },
+                { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 6 },
             ]
 
 
@@ -42,13 +38,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.container-h {
-
-    border: 1px solid black;
-}
-
-.card-h {
-    height: 300px;
-}
-</style>
+<style lang="scss" scoped></style>
