@@ -1,15 +1,16 @@
 <template>
-    <div class=" col-sm-12 col-md-4 col-xl-3 p-2">
+    <div class=" col-sm-12 col-md-6 col-xl-4 p-2">
         <div class="card card-h">
             <img class="card-img-top image-h" :src="dish.image" alt="foto">
-            <div class="card-body d-flex flex-column gap-2">
-                <div class="d-flex justify-content-between">
+            <div class="card-body d-flex flex-column p-2">
+                <div class="d-flex justify-content-between mb-2">
                     <h3 class="m-0 fs-6"> {{ dish.name }}</h3>
-                    <div>{{ dish.price }}$</div>
+                    <div class="flex-shrink-0"><span class="euro-char">&euro; </span><strong>{{ dish.price }}</strong>
+                    </div>
                 </div>
                 <div>
                     <div>Dettagli</div>
-                    <p class="m-0">{{ dish.description }}</p>
+                    <p class="m-0 description-air">{{ dish.description }}</p>
                 </div>
             </div>
             <div class="d-flex justify-content-center mb-3">
@@ -22,6 +23,8 @@
                     <button class="custom-btn" :class="{ 'd-none': quantity < 1 }" @click="add">+</button>
                 </div>
             </div>
+            <div class="availabile-badge d-flex justify-content-center align-items-center p-1"
+                :class="{ 'd-none': dish.available === false }">disponibile a breve</div>
         </div>
     </div>
 </template>
@@ -65,7 +68,7 @@ export default {
 @use '../style/partials/variables' as *;
 
 .card-h {
-    height: 500px;
+    height: 550px;
     // width: 300px;
 }
 
@@ -104,5 +107,26 @@ export default {
     justify-content: center;
     align-items: center;
     background-color: $brand-orange;
+}
+
+.euro-char {
+    font-size: 18px;
+    color: $brand-orange;
+}
+
+.description-air {
+    color: grey;
+    font-size: 18px;
+    height: 120px;
+    overflow: auto;
+}
+
+.availabile-badge {
+    background-color: $brand-salmon;
+    color: white;
+    position: absolute;
+    top: 8px;
+    right: 0px;
+    font-size: 14px;
 }
 </style>
