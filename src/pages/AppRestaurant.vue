@@ -21,7 +21,7 @@ export default {
     data() {
         return {
             dishes: [
-                { name: 'Spagetti', description: 'Buoni spagettoni', price: '12', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 1 },
+                { name: 'Spagetti alla carbonara', description: 'Buoni spagettoni', price: '12', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 1 },
                 { name: 'Pizza', description: 'Buona pizza', price: '8', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 2 },
                 { name: 'Bistecca', description: 'Buona bisteccona', price: '20', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 3 },
                 { name: 'Zuppa', description: 'Buona zuppa', price: '5', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 4 },
