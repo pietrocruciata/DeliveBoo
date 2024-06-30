@@ -21,7 +21,7 @@ export default {
     data() {
         return {
             dishes: [
-                { name: 'Spagetti alla carbonara', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo aperiam recusandae excepturi id, quis veritatis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo aperiam recusandae excepturi id, quis veritatis!', price: '1.99', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 1 },
+                { name: 'Spagetti alla carbonara', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo aperiam recusandae excepturi id, quis veritatis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo aperiam recusandae excepturi id, quis veritatis!', price: '1.99', available: false, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 1 },
                 { name: 'Pizza', description: 'Buona pizza', price: '8.99', available: false, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 2 },
                 { name: 'Bistecca', description: 'Buona bisteccona', price: '20.50', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 3 },
                 { name: 'Zuppa', description: 'Buona zuppa', price: '5', available: false, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 4 },

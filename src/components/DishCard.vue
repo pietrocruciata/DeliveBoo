@@ -72,6 +72,11 @@ export default {
     // width: 300px;
 }
 
+.card-h:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .custom-btn {
     background: none;
     border: none;
@@ -109,6 +114,7 @@ export default {
     background-color: $brand-orange;
 }
 
+
 .euro-char {
     font-size: 18px;
     color: $brand-orange;
@@ -119,6 +125,7 @@ export default {
     font-size: 18px;
     height: 120px;
     overflow: auto;
+
 }
 
 .availabile-badge {
