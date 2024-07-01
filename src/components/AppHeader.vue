@@ -4,11 +4,11 @@
 
 
         <div class="c-orange d-flex">
-            logo
-            <h1 class="d-none d-md-inline-block">DeliveBoo</h1>
+           
+          <img src="/img/logo.png" alt="">
         </div>
 
-        <div class="d-flex  gap-md-5 gap-3 font-icon c-grey">
+        <div class="d-flex  gap-md-5 gap-3 font-icon c-white">
             <div >
                 <RouterLink to="/"><font-awesome-icon :icon="['fas', 'house']" /></RouterLink>
             </div>
@@ -33,7 +33,7 @@ export default {
 @use '../style/partials/variables' as *;
 
 .bg_cream {
-    background-color: $brand-cream
+    background-color: $brand-orange
 }
 
 .c-orange {
@@ -52,12 +52,13 @@ export default {
 
 .font-icon{
     font-size: 20px;
-    color: $brand-grey;
+    color: white;
 
     &>*:hover{
-        color:$brand-orange
+        color:$brand-grey
     };
 }
+
 
 
 </style>
