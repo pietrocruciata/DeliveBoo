@@ -1,7 +1,7 @@
 <template>
     <div class="col-sm-12 col-md-6 col-xl-4 p-2">
         <div class="card card_restaurant">
-            <img class="card-img-top" src="https://qph.cf2.quoracdn.net/main-qimg-1a4bafe2085452fdc55f646e3e31279c-lq" alt="">
+            <img :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="">
             <div class="card-body">
                 <h3 class="card-title">{{ restaurant.name }}</h3>
                 <p>{{ restaurant.description }}</p>
@@ -35,6 +35,12 @@
 
             }
         },
+
+        methods: {
+            convertText(inputString) {
+                return inputString.replace("\\uploads", '');
+            },
+        }
 
     }
 </script>
