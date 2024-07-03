@@ -4,17 +4,46 @@
         <div>
             <h6 class="text-center my-4"><strong>Scegli per tipologia</strong></h6>
             <ul class="d-flex gap-5 justify-content-center flex-wrap">
-                <li class=" size-types disposition-types " v-for="(type, i) in types " :key="i">
-                    <img :src="type.image" alt="" class="text-center font-icon">
-                    <div>{{ type.label }}</div>
+                <li>
+                    <button class="text-center font-icon badge rounded-pill" @click="selectedType = [] ">
+                        <div>tutti i ristoranti</div>
+                    </button>
                 </li>
-
+                <li class=" size-types disposition-types " v-for="(type, i) in types " :key="i">
+                    <button @click="filterByType(type.label, type)">
+                        <img :src="type.image" alt="" class="text-center font-icon">
+                        <div>{{ type.label }}</div>
+                    </button>
+                </li>
             </ul>
-        </div>
-        <div class="d-flex justify-content-center my-4">
-            <RouterLink to="/restaurant" class="text-center"><strong>Tutti i nostri Ristoranti</strong></RouterLink>
-            <div class="card"></div>
 
+        </div>
+        <div class="my-4 row">
+            <!-- <RouterLink to="/restaurant" class="text-center"><strong>Tutti i nostri Ristoranti</strong></RouterLink> -->
+            <div v-if="filteredRestaurants.length === 0">
+                <p>Nessun ristorante corrispondente.</p>
+            </div>
+            <div v-else class="my-4 row">
+                    <div v-for="(restaurant, index) in filteredRestaurants" :key="index" class="col-sm-12 col-md-6 col-xl-4 p-2" >
+                        <div class="card">
+                            <h3>{{ restaurant.name }}</h3>
+                            <p>{{ restaurant.description }}</p>
+                            <p><strong>Indirizzo:</strong> {{ restaurant.address }}</p>
+                            <p><strong>Email:</strong> {{ restaurant.email }}</p>
+                            <p><strong>Partita IVA:</strong> {{ restaurant.p_iva }}</p>
+                            <div>
+                                <strong>Tipi:</strong>
+                                <ul>
+                                    <li v-for="(type, j) in restaurant.types" :key="j">
+                                    <img :src="type.image" alt="" class="text-center font-icon">
+                                    {{ type.label }}
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
         </div>
 
 
@@ -28,50 +57,73 @@ export default {
         return {
             restaurants: [],
             types: [],
+            selectedType: [],
         }
     },
 
     methods: {
 
-    fetchRestaurants() {
-        //chiamata axios
-        axios.get('http://127.0.0.1:8000/api/restaurants',{
-            // params: {
-            // perPage : this.perPage,
-            // page: this.currentPage
-            // }
-        }).then((res) => {
-            console.log(res.data.restaurants)
+        fetchRestaurants() {
+            //chiamata axios
+            axios.get('http://127.0.0.1:8000/api/restaurants',{
+                // params: {
+                // perPage : this.perPage,
+                // page: this.currentPage
+                // }
+            }).then((res) => {
+                console.log(res.data.restaurants)
 
-            this.restaurants = res.data.restaurants
+                this.restaurants = res.data.restaurants
 
-            console.log(this.restaurants);
-            // this.lastPage = res.data.restaurants.last_page
-        })
-    },
+                console.log(this.restaurants);
+                // this.lastPage = res.data.restaurants.last_page
+            })
+        },
 
-    fetchTypes() {
-        //chiamata axios
-        axios.get('http://127.0.0.1:8000/api/types',{
-            // params: {
-            // perPage : this.perPage,
-            // page: this.currentPage
-            // }
-        }).then((res) => {
-            console.log(res.data.types)
+        fetchTypes() {
+            //chiamata axios
+            axios.get('http://127.0.0.1:8000/api/types',{
+                // params: {
+                // perPage : this.perPage,
+                // page: this.currentPage
+                // }
+            }).then((res) => {
+                console.log(res.data.types)
 
-            this.types = res.data.types
+                this.types = res.data.types
 
-            console.log(this.types);
-            // this.lastPage = res.data.restaurants.last_page
-        })
-    },
+                console.log(this.types);
+                // this.lastPage = res.data.restaurants.last_page
+            })
+        },
+
+        filterByType(typeLabel, i) {
+            if(this.selectedType.includes(typeLabel)){
+                this.selectedType.splice(i,1);
+            } else {
+                this.selectedType.push(typeLabel);
+            }
+            console.log(this.selectedType);
+            console.log();
+        }
     },
 
     created(){
       this.fetchRestaurants(),
       this.fetchTypes()
-    }
+    },
+
+    computed: {
+        filteredRestaurants() {
+            if (this.selectedType.length === 0) {
+                return this.restaurants;
+            } else {
+                return this.restaurants.filter(restaurant => {
+                return restaurant.types.some(type => this.selectedType.includes(type.label));
+                });
+            }
+        }
+    },
 
 
 }
