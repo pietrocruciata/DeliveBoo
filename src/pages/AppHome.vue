@@ -9,8 +9,8 @@
                         <div class="btn-orange">tutti i ristoranti</div>
                     </div> -->
                 </li>
-                <li class=" size-types disposition-types " v-for="(type, i) in types " :key="i">
-                    <div @click="filterByType(type.label, type), isSelected = !isSelected"  :class=" isSelected ? 'btn-cream selected' : 'btn-cream'"  >
+                <li class=" size-types disposition-types " v-for="(type, i) in types " :key="i"  >
+                    <div @click="filterByType(type.label, type) "  :class=" selectedType.includes(type.label)? 'btn-cream selected' : 'btn-cream'">
                         <img :src="type.image" alt="" class="text-center font-icon">
                         <div>{{ type.label }}</div>
                     </div>
@@ -58,7 +58,7 @@ export default {
             restaurants: [],
             types: [],
             selectedType: [],
-            isSelected :false,
+          
         }
     },
 
@@ -101,12 +101,13 @@ export default {
         filterByType(typeLabel, i) {
             const index = this.selectedType.indexOf(typeLabel);
             if (index === -1) {
-                this.selectedType.push(typeLabel);
+                this.selectedType.push(typeLabel);  
                 console.log(this.selectedType);
             } else {
                 this.selectedType.splice(index, 1); 
                 console.log(this.selectedType);
             }
+          
         }
     },
 
@@ -165,6 +166,6 @@ export default {
     }
 
     .selected{
-        opacity: 0.5;
+        background-color: $brand-orange;
     }
 </style>
