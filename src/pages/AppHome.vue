@@ -54,16 +54,14 @@
 <script>
 import axios from 'axios'
 import AppRestaurantCard from '../components/AppRestaurantCard.vue'
-
 import AppHero from '../components/AppHero.vue'
 export default {
 
     components: {
         AppRestaurantCard,
-    },
-    components: {
         AppHero
     },
+
     data() {
         return {
             restaurants: [],
