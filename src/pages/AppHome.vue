@@ -34,7 +34,7 @@
                         <div v-for="(restaurant, index) in filteredRestaurants" :key="index"
                             class="col-sm-12 col-md-6 col-xl-4 p-2">
                             <div class="card">
-                                <img :src="restaurant.image" alt="">
+                                <img :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="">
                                 <h3>{{ restaurant.name }}</h3>
                                 <p>{{ restaurant.description }}</p>
                                 <p><strong>Indirizzo:</strong> {{ restaurant.address }}</p>
@@ -79,6 +79,10 @@ export default {
     },
 
     methods: {
+
+        convertText(inputString) {
+            return inputString.replace("\\uploads", '');
+        },
 
         fetchRestaurants() {
             //chiamata axios
