@@ -1,4 +1,7 @@
 <template>
+    <div class="container-fluid p-0">
+        <AppHero />
+    </div>
     <div class="container ">
         <!-- <h5 class="btn-orange">L'ordine direttamente a casa tua</h5> -->
         <div>
@@ -32,7 +35,7 @@
                     <div v-else class="my-4 row">
 
                         <template v-for="(restaurant, index) in filteredRestaurants" :key="index">
-                            <AppRestaurantCard :restaurant="restaurant"/>
+                            <AppRestaurantCard :restaurant="restaurant" />
                         </template>
 
                     </div>
@@ -52,10 +55,14 @@
 import axios from 'axios'
 import AppRestaurantCard from '../components/AppRestaurantCard.vue'
 
+import AppHero from '../components/AppHero.vue'
 export default {
 
     components: {
         AppRestaurantCard,
+    },
+    components: {
+        AppHero
     },
     data() {
         return {

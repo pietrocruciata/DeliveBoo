@@ -10,6 +10,8 @@
         <div class="slogan text-center f-size">
             <div>Scopri i migliori ristoranti con noi! </div>
         </div>
+
+
     </section>
 </template>
 
