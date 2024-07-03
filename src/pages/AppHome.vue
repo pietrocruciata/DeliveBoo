@@ -1,4 +1,7 @@
 <template>
+    <div class="container-fluid p-0">
+        <AppHero />
+    </div>
     <div class="container ">
         <!-- <h5 class="btn-orange">L'ordine direttamente a casa tua</h5> -->
         <div>
@@ -68,7 +71,11 @@
 
 <script>
 import axios from 'axios'
+import AppHero from '../components/AppHero.vue'
 export default {
+    components: {
+        AppHero
+    },
     data() {
         return {
             restaurants: [],
