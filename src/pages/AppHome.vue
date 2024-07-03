@@ -31,27 +31,9 @@
                     </div>
                     <div v-else class="my-4 row">
 
-                        <div v-for="(restaurant, index) in filteredRestaurants" :key="index"
-                            class="col-sm-12 col-md-6 col-xl-4 p-2">
-                            <div class="card">
-                                <img :src="restaurant.image" alt="">
-                                <h3>{{ restaurant.name }}</h3>
-                                <p>{{ restaurant.description }}</p>
-                                <p><strong>Indirizzo:</strong> {{ restaurant.address }}</p>
-                                <p><strong>Email:</strong> {{ restaurant.email }}</p>
-                                <p><strong>Partita IVA:</strong> {{ restaurant.p_iva }}</p>
-                                <div>
-                                    <strong>Tipi:</strong>
-                                    <ul>
-                                        <li v-for="(type, j) in restaurant.types" :key="j">
-                                            <img :src="type.image" alt="" class="text-center font-icon">
-                                            {{ type.label }}
-                                        </li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
+                        <template v-for="(restaurant, index) in filteredRestaurants" :key="index">
+                            <AppRestaurantCard :restaurant="restaurant"/>
+                        </template>
 
                     </div>
                 </RouterLink>
@@ -68,7 +50,13 @@
 
 <script>
 import axios from 'axios'
+import AppRestaurantCard from '../components/AppRestaurantCard.vue'
+
 export default {
+
+    components: {
+        AppRestaurantCard,
+    },
     data() {
         return {
             restaurants: [],
