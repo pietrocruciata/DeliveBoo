@@ -5,7 +5,7 @@
 
         <div class="c-orange d-flex">
            
-          <img src="/img/logo.png" alt="">
+          <img src="/img/logo.png" alt="" class="font-logo" >
         </div>
 
         <div class="d-flex  gap-md-5 gap-3 font-icon c-white">
@@ -59,6 +59,7 @@ export default {
     };
 }
 
-
-
+.font-logo{
+    width: 100px;
+}
 </style>
