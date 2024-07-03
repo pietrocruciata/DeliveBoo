@@ -1,21 +1,21 @@
 <template>
 
-    <div class="d-flex bg_cream  p-3 justify-content-around align-items-center">
+    <div class="d-flex bg_cream  p-2 justify-content-around align-items-center">
 
 
         <div class="c-orange d-flex">
-           
-          <img src="/img/logo.png" alt="" class="font-logo" >
+
+            <img src="/img/logo.png" alt="" class="font-logo">
         </div>
 
         <div class="d-flex  gap-md-5 gap-3 font-icon c-white">
-            <div >
+            <div>
                 <RouterLink to="/"><font-awesome-icon :icon="['fas', 'house']" /></RouterLink>
             </div>
-            <div >
+            <div>
                 <a href="#"><font-awesome-icon :icon="['fas', 'user']" /></a>
             </div>
-            <div >
+            <div>
                 <a href="#"><font-awesome-icon :icon="['fas', 'cart-shopping']" /></a>
             </div>
         </div>
@@ -33,7 +33,8 @@ export default {
 @use '../style/partials/variables' as *;
 
 .bg_cream {
-    background-color: $brand-orange
+    background-color: $brand-orange;
+
 }
 
 .c-orange {
@@ -50,16 +51,18 @@ export default {
     border-radius: 20px;
 }
 
-.font-icon{
-    font-size: 20px;
+.font-icon {
+    font-size: 25px;
     color: white;
 
-    &>*:hover{
-        color:$brand-grey
-    };
+    &>*:hover {
+        color: $brand-grey
+    }
+
+    ;
 }
 
-.font-logo{
+.font-logo {
     width: 100px;
 }
 </style>
