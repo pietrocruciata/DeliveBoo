@@ -1,7 +1,7 @@
 <template>
     <div class="col-sm-12 col-md-6 col-xl-4 p-2">
         <div class="card card_restaurant">
-            <img :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="">
+            <img :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="" class="img-size">
             <div class="card-body">
                 <h3 class="card-title">{{ restaurant.name }}</h3>
                 <p>{{ restaurant.description }}</p>
@@ -50,6 +50,8 @@
 
 .card_restaurant{
     box-shadow: 0 0 5px lightgrey;
+    
+    height: 100%;
 
     &:hover{
         transform: scale(1.02);
@@ -66,5 +68,11 @@
         }
     }
 
+}
+
+.img-size{
+    width: 100%;
+    height: 250px;
+  
 }
 </style>
