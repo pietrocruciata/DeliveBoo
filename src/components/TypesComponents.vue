@@ -14,11 +14,15 @@ export default {
     props: {
         item: {
             type: Object,
+        },
+        selectedType:{
+            type: Array
         }
+
     },
     data() {
         return {
-            selectedType: [],
+         
         }
     },
 
