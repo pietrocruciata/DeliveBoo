@@ -39,12 +39,13 @@
 import axios from 'axios'
 import AppRestaurantCard from '../components/AppRestaurantCard.vue'
 import AppHero from '../components/AppHero.vue'
-
+import TypesComponents from '../components/TypesComponents.vue';
 export default {
 
     components: {
         AppRestaurantCard,
-        AppHero
+        AppHero,
+        TypesComponents
     },
 
     data() {
