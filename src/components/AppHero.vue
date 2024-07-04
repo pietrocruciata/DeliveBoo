@@ -6,6 +6,7 @@
                     src="https://assets3.thrillist.com/v1/image/3130793/1584x1188/scale;webp=auto;jpeg_quality=60;progressive.jpg"
                     alt="">
             </div>
+            <div class="text-overlay"></div>
         </div>
         <div class="slogan text-center f-size">
             <div>Scopri i migliori ristoranti con noi! </div>
@@ -38,6 +39,8 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: relative;
+
 }
 
 .slogan {
@@ -46,8 +49,23 @@ section {
     color: white;
     top: 50%;
     left: 50%;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     transform: translate(-50%, -50%);
     z-index: 10;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+
 }
 
 @media (min-width: 300px) {
