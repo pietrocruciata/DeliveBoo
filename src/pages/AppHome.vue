@@ -3,22 +3,12 @@
         <AppHero />
     </div>
     <div class="container ">
-        <!-- <h5 class="btn-orange">L'ordine direttamente a casa tua</h5> -->
         <div>
             <h6 class="text-center my-4"><strong>Scegli per tipologia</strong></h6>
             <ul class="d-flex gap-5 justify-content-center flex-wrap">
-                <!-- <li>
-                     <div class="text-center font-icon disposition-types" @click="selectedType = [] ">
-                        <div class="btn-orange">tutti i ristoranti</div>
-                    </div> 
-                </li> -->
-                <li class=" size-types disposition-types col-xl-2" v-for="(type, i) in types " :key="i">
-                    <div @click="filterByType(type.label, type)"
-                        :class="selectedType.includes(type.label) ? 'btn-cream selected' : 'btn-cream'">
-                        <img :src="type.image" alt="" class="text-center font-icon">
-                        <div>{{ type.label }}</div>
-                    </div>
-                </li>
+    
+                <TypesComponents v-for="(type, i) in types " :key="i" :item="type" :selectedType="selectedType" @filter="filterByType(type.label, type) "  
+                ></TypesComponents>
             </ul>
 
         </div>
@@ -43,18 +33,13 @@
             </div>
         </div>
     </section>
-
-
-
-
-
-
 </template>
 
 <script>
 import axios from 'axios'
 import AppRestaurantCard from '../components/AppRestaurantCard.vue'
 import AppHero from '../components/AppHero.vue'
+
 export default {
 
     components: {
@@ -110,7 +95,6 @@ export default {
                 // this.lastPage = res.data.restaurants.last_page
             })
         },
-
         filterByType(typeLabel, i) {
             const index = this.selectedType.indexOf(typeLabel);
             if (index === -1) {
@@ -122,6 +106,8 @@ export default {
             }
 
         }
+
+
     },
 
     created() {
@@ -147,6 +133,7 @@ export default {
 
 <style lang="scss" scoped>
 @use '../style/partials/variables' as *;
+
 
 .main {
     color: $brand-orange;
