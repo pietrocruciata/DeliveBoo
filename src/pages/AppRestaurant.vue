@@ -1,7 +1,7 @@
 <template>
     <div class="container mt-3 fs-3 d-flex align-items-center justify-content-center">Le Nostre Specialità</div>
     <div class="container mt-3">
-        <!-- <RouterLink to="/">torna alla home</RouterLink> -->
+        <RouterLink to="/" class="back-btn"><font-awesome-icon :icon="['fas', 'angle-left']" /></RouterLink>
         <div class="row">
             <template v-for="dish in dishes " key="dish.id">
                 <DishCard :dish="dish"></DishCard>
@@ -38,4 +38,20 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use '../style/partials/variables' as *;
+
+.back-btn{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgrey;
+    &:hover{
+        background-color: $brand-orange;
+    }
+}
+</style>
