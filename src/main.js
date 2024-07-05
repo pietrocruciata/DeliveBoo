@@ -29,6 +29,14 @@ const router = createRouter({
         {path: '/', component: AppHome},
         {path: '/restaurant', component: AppRestaurant},
 	],
+
+	scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        } else {
+            return { left: 0, top: 0 };
+        }
+    },
 })
 
 app.use(router).mount('#app')

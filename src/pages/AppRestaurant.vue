@@ -52,6 +52,7 @@ export default {
     background-color: lightgrey;
     &:hover{
         background-color: $brand-orange;
+        color: white;
     }
 }
 </style>
