@@ -1,8 +1,8 @@
 <template>
     <div class=" col-sm-12 col-md-6 col-xl-4 p-2">
         <div class="card card-h">
-            <img class="card-img-top image-h "
-                :src="'http://127.0.0.1:8000/api/download' + convertText(dish.image)" alt="foto">
+            <img class="card-img-top image-h " :src="'http://127.0.0.1:8000/api/download' + convertText(dish.image)"
+                alt="foto">
             <div class="card-body d-flex flex-column p-2">
                 <div class="d-flex justify-content-between mb-2">
                     <h3 class="m-0 fs-6"> {{ dish.name }}</h3>
@@ -62,7 +62,7 @@ export default {
             return this.quantity
         },
         convertText(inputString) {
-            return inputString?.replace("\\uploads", '');
+            return inputString?.replace("\\uploads", '').replace("uploads", '');
         },
     }
 }

@@ -22,47 +22,49 @@
 </template>
 
 <script>
-    export default {
+export default {
 
-        props: {
-            restaurant: {
-                type: Object,
-                required: true
-            }
-        },  
-        data() {
-            return{
-
-            }
-        },
-
-        methods: {
-            convertText(inputString) {
-                return inputString.replace("\\uploads", '');
-            },
+    props: {
+        restaurant: {
+            type: Object,
+            required: true
         }
+    },
+    data() {
+        return {
 
+        }
+    },
+
+    methods: {
+        convertText(inputString) {
+            return inputString.replace("\\uploads", '');
+        },
     }
+
+}
 </script>
 
 <style lang="scss" scoped>
 @use '../style/partials/variables' as *;
 
-.card_restaurant{
+.card_restaurant {
     box-shadow: 0 0 5px lightgrey;
-    
+
     height: 100%;
 
-    &:hover{
+    &:hover {
         transform: scale(1.02);
         box-shadow: 1px 1px 8px 3px $brand-orange;
     }
-    .type-pill{
+
+    .type-pill {
         border: none;
         padding: 5px 20px;
         border-radius: 999px;
         background-color: $brand-orange;
-        .type_label{
+
+        .type_label {
             color: $brand-orange;
             color: white;
         }
@@ -70,9 +72,9 @@
 
 }
 
-.img-size{
+.img-size {
     width: 100%;
     height: 250px;
-  
+
 }
 </style>

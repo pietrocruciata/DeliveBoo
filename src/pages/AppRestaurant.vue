@@ -37,7 +37,7 @@ export default {
         return {
             restaurantId: this.$route.params.id,
             restaurant: {},
-            dishes:[],
+            dishes: [],
         }
     },
     methods: {
@@ -54,6 +54,7 @@ export default {
                 this.restaurant = res.data.restaurant
 
                 this.dishes = res.data.restaurant.dishes
+                console.log(this.dishes)
             })
         },
         convertText(inputString) {
