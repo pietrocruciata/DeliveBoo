@@ -3,6 +3,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import AppHome from './pages/AppHome.vue'
 import AppRestaurant from './pages/AppRestaurant.vue'
+import AppCart from './pages/AppCart.vue'
+import store from "./store"
 
 //INSTALL FONT AWESOM
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -23,11 +25,13 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 //ROUTES
 import { createRouter, createWebHistory } from 'vue-router'
 
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', component: AppHome },
+        { path: '/', name: 'Home' ,component: AppHome },
         { path: '/restaurant/:id', name: 'restaurant.show', component: AppRestaurant },
+        { path:'/cart', name:'Cart', component: AppCart }
 
     ],
 
@@ -40,4 +44,4 @@ const router = createRouter({
     },
 })
 
-app.use(router).mount('#app')
+app.use(router).use(store).mount('#app')

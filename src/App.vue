@@ -12,6 +12,9 @@ import AppFooter from './components/AppFooter.vue'
 import AppMain from './components/AppMain.vue'
 
   export default {
+    async mounted() {
+      await this.$store.commit('initialiseStore')
+    },
     components: {
     AppHeader,
     AppMain,
