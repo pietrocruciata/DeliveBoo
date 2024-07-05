@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-12 col-md-6 col-xl-4 p-2">
+    <div class="">
         <div class="card card_restaurant">
             <img :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="" class="img-size">
             <div class="card-body">

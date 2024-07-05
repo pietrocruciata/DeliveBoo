@@ -24,8 +24,8 @@
                 <div v-else class="my-4 row">
 
                     <template v-for="(restaurant, index) in filteredRestaurants" :key="index">
-                        <RouterLink :to="{ name: 'restaurant.show', params: { id: restaurant.id } }">
-
+                        <RouterLink :to="{ name: 'restaurant.show', params: { id: restaurant.id } }" class="col-sm-12 col-md-6 col-xl-4 p-2">
+                            
                             <AppRestaurantCard :restaurant="restaurant" />
                         </RouterLink>
 

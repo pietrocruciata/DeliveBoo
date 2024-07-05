@@ -57,7 +57,7 @@ export default {
             })
         },
         convertText(inputString) {
-            return inputString.replace("\\uploads", '');
+            return inputString?.replace("\\uploads", '');
         },
     },
 

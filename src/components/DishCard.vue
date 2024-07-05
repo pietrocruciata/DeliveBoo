@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="availabile-badge d-flex justify-content-center align-items-center p-1"
-                :class="{ 'd-none': dish.available === false }">disponibile a breve</div>
+                :class="{ 'd-none': dish.availability == true }">disponibile a breve</div>
         </div>
     </div>
 </template>
@@ -62,7 +62,7 @@ export default {
             return this.quantity
         },
         convertText(inputString) {
-            return inputString.replace("\\uploads", '');
+            return inputString?.replace("\\uploads", '');
         },
     }
 }
