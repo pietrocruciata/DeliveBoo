@@ -6,9 +6,9 @@
         <div>
             <h6 class="text-center my-4"><strong>Scegli per tipologia</strong></h6>
             <ul class="d-flex gap-5 justify-content-center flex-wrap">
-    
-                <TypesComponents v-for="(type, i) in types " :key="i" :item="type" :selectedType="selectedType" @filter="filterByType(type.label, type) "  
-                ></TypesComponents>
+
+                <TypesComponents v-for="(type, i) in types " :key="i" :item="type" :selectedType="selectedType"
+                    @filter="filterByType(type.label, type)"></TypesComponents>
             </ul>
 
         </div>
@@ -18,18 +18,20 @@
         <div class="container">
             <div class="my-4 row ">
                 <strong class="text-center">Tutti i nostri Ristoranti</strong>
-                <RouterLink to="/restaurant">
-                    <div v-if="filteredRestaurants.length === 0">
-                        <p>Nessun ristorante corrispondente.</p>
-                    </div>
-                    <div v-else class="my-4 row">
+                <div v-if="filteredRestaurants.length === 0">
+                    <p>Nessun ristorante corrispondente.</p>
+                </div>
+                <div v-else class="my-4 row">
 
-                        <template v-for="(restaurant, index) in filteredRestaurants" :key="index">
+                    <template v-for="(restaurant, index) in filteredRestaurants" :key="index">
+                        <RouterLink :to="{ name: 'restaurant.show', params: { id: restaurant.id } }">
+
                             <AppRestaurantCard :restaurant="restaurant" />
-                        </template>
+                        </RouterLink>
 
-                    </div>
-                </RouterLink>
+                    </template>
+
+                </div>
             </div>
         </div>
     </section>

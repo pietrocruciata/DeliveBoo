@@ -24,13 +24,14 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
-	history: createWebHistory(),
-	routes: [
-        {path: '/', component: AppHome},
-        {path: '/restaurant', component: AppRestaurant},
-	],
+    history: createWebHistory(),
+    routes: [
+        { path: '/', component: AppHome },
+        { path: '/restaurant/:id', name: 'restaurant.show', component: AppRestaurant },
 
-	scrollBehavior(to, from, savedPosition) {
+    ],
+
+    scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
             return savedPosition;
         } else {

@@ -1,4 +1,17 @@
 <template>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <img :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="">
+            </div>
+            <div class="col-6 d-flex flex-column">
+                <div>{{ restaurant.name }}</div>
+                <div>{{ restaurant.email }}</div>
+                <div>{{ restaurant.address }}</div>
+            </div>
+        </div>
+    </div>
+
     <div class="container mt-3 fs-3 d-flex align-items-center justify-content-center">Le Nostre Specialità</div>
     <div class="container mt-3">
         <RouterLink to="/" class="back-btn"><font-awesome-icon :icon="['fas', 'angle-left']" /></RouterLink>
@@ -13,6 +26,8 @@
 
 <script>
 import DishCard from '../components/DishCard.vue'
+import axios from 'axios'
+
 
 export default {
     components: {
@@ -20,20 +35,36 @@ export default {
     },
     data() {
         return {
-            dishes: [
-                { name: 'Spagetti alla carbonara', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo aperiam recusandae excepturi id, quis veritatis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo aperiam recusandae excepturi id, quis veritatis!', price: '1.99', available: false, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 1 },
-                { name: 'Pizza', description: 'Buona pizza', price: '8.99', available: false, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 2 },
-                { name: 'Bistecca', description: 'Buona bisteccona', price: '20.50', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 3 },
-                { name: 'Zuppa', description: 'Buona zuppa', price: '5', available: false, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 4 },
-                { name: 'Piatto freddo', description: 'Piatttone buonone', price: '18.99', available: true, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 5 },
-                { name: 'Piatto siciliano', description: 'Molto molto buono', price: '90', available: false, image: 'https://www.welovepasta.it/wp-content/uploads/2017/10/Spaghetti_pomodorini.jpg', id: 6 },
-            ]
-
-
-
-
+            restaurantId: this.$route.params.id,
+            restaurant: {},
+            dishes:[],
         }
+    },
+    methods: {
+        fetchDishes() {
+            //chiamata axios
+            axios.get(`http://127.0.0.1:8000/api/restaurants/${this.restaurantId}`, {
+                // params: {
+                // perPage : this.perPage,
+                // page: this.currentPage
+                // }
+            }).then((res) => {
+                console.log(res.data.restaurant.dishes)
+
+                this.restaurant = res.data.restaurant
+
+                this.dishes = res.data.restaurant.dishes
+            })
+        },
+        convertText(inputString) {
+            return inputString.replace("\\uploads", '');
+        },
+    },
+
+    created() {
+        this.fetchDishes()
     }
+
 
 }
 </script>
@@ -41,7 +72,7 @@ export default {
 <style lang="scss" scoped>
 @use '../style/partials/variables' as *;
 
-.back-btn{
+.back-btn {
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -50,7 +81,8 @@ export default {
     justify-content: center;
     align-items: center;
     background-color: lightgrey;
-    &:hover{
+
+    &:hover {
         background-color: $brand-orange;
         color: white;
     }
