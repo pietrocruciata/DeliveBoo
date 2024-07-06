@@ -8,7 +8,7 @@ export default createStore({
     restaurantId: null,
   },
   mutations: {
-    async initialiseStore(state) {
+    initialiseStore(state) {
       if (localStorage.getItem('cart')) {
         state.cart = JSON.parse(localStorage.getItem('cart'));
       }
@@ -19,7 +19,6 @@ export default createStore({
         state.restaurantId = JSON.parse(localStorage.getItem('restaurantId'));
       }
       console.log("Initialise Store: ", state.restaurantId);
-      return true;
     },
     setRestaurantId(state, restaurantId) {
       state.restaurantId = restaurantId;
@@ -64,31 +63,34 @@ export default createStore({
       localStorage.setItem('cartTotal', JSON.stringify(state.cartTotal));
       localStorage.setItem('cart', JSON.stringify(state.cart));
       localStorage.setItem('restaurantId', JSON.stringify(state.restaurantId));
-      console.log("Cart Updated, Current Restaurant ID: ", state.restaurantId); // Aggiunto questo console log
+      console.log("Cart Updated, Current Restaurant ID: ", state.restaurantId);
     },
     updateCart(state, payload) {
-      state.cart.find(o => o.id === payload.dish.id).qty = payload.dish.qty;
+      let itemToUpdate = state.cart.find(o => o.id === payload.dish.id);
+      if (itemToUpdate) {
+        itemToUpdate.qty = payload.dish.qty;
+      }
 
       state.cartTotal = state.cart.reduce((accumulator, object) =>
         parseFloat(accumulator) + parseFloat(object.price * object.qty), 0);
 
       localStorage.setItem('cartTotal', JSON.stringify(state.cartTotal));
       localStorage.setItem('cart', JSON.stringify(state.cart));
-      console.log("Updated Cart, Current Restaurant ID: ", state.restaurantId); // Aggiunto questo console log
+      console.log("Updated Cart, Current Restaurant ID: ", state.restaurantId);
     },
   },
   actions: {
     async fetchRestaurantId({ commit }, restaurantId) {
       try {
-        console.log("Fetching restaurant ID:", restaurantId); // Verifica l'ID del ristorante che stai cercando di recuperare
+        console.log("Fetching restaurant ID:", restaurantId);
 
         const response = await axios.get(`http://127.0.0.1:8000/api/restaurants/${restaurantId}`);
-        console.log("API Response:", response.data); // Verifica la risposta completa della chiamata API
+        console.log("API Response:", response.data);
 
         const restaurant = response.data.restaurant;
-        console.log("Fetched restaurant:", restaurant); // Verifica il ristorante estratto dalla risposta API
+        console.log("Fetched restaurant:", restaurant);
 
-        commit('setRestaurantId', restaurant.id); // Assicurati che l'ID del ristorante venga impostato nel Vuex store
+        commit('setRestaurantId', restaurant.id);
       } catch (error) {
         console.error('Errore durante il recupero dell\'ID del ristorante:', error);
       }
