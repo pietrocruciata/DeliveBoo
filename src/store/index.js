@@ -1,54 +1,108 @@
-import { createStore } from 'vuex'
-/* eslint-disable */
+import { createStore } from 'vuex';
+import axios from 'axios';
+
 export default createStore({
   state: {
-    cart:[],
-    cartTotal:0,
+    cart: [],
+    cartTotal: 0,
+    restaurantId: null,
   },
   mutations: {
-
-   async initialiseStore(state) {
-         if(localStorage.getItem('cart')){
-          state.cart = JSON.parse(localStorage.getItem('cart'))
-         }
-         if(localStorage.getItem('cartTotal')){
-         state.cartTotal = parseFloat(localStorage.getItem('cartTotal')) 
-         }
-         return true;
+    async initialiseStore(state) {
+      if (localStorage.getItem('cart')) {
+        state.cart = JSON.parse(localStorage.getItem('cart'));
+      }
+      if (localStorage.getItem('cartTotal')) {
+        state.cartTotal = parseFloat(localStorage.getItem('cartTotal'));
+      }
+      if (localStorage.getItem('restaurantId')) {
+        state.restaurantId = JSON.parse(localStorage.getItem('restaurantId'));
+      }
+      console.log("Initialise Store: ", state.restaurantId);
+      return true;
     },
-    addRemoveCart(state,payload){
-
-      //add or remove item
-      payload.toAdd? 
-      state.cart.push(payload.dish):
-      state.cart = state.cart.filter(function( obj ) {
-        return obj.id !== payload.dish.id;
-      });
-
-      //calculating the total
-      state.cartTotal = state.cart.reduce((accumulator, object) => {
-   
-        return parseFloat(accumulator) + parseFloat(object.price*object.qty);
-      }, 0);
-
-       //saving in web storage
-      localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
-      localStorage.setItem('cart',JSON.stringify(state.cart));
+    setRestaurantId(state, restaurantId) {
+      state.restaurantId = restaurantId;
+      localStorage.setItem('restaurantId', JSON.stringify(restaurantId));
+      console.log("Restaurant ID Set: ", state.restaurantId);
     },
-    updateCart(state,payload){
-         //update quantity 
-        state.cart.find(o => o.id ===  payload.dish.id).qty = payload.dish.qty;
+    clearCart(state) {
+      state.cart = [];
+      state.cartTotal = 0;
+      state.restaurantId = null;
+      localStorage.removeItem('cart');
+      localStorage.removeItem('cartTotal');
+      localStorage.removeItem('restaurantId');
+      console.log("Cart Cleared, Restaurant ID Reset: ", state.restaurantId);
+    },
+    addRemoveCart(state, payload) {
+      console.log("Restaurant ID before mutation:", state.restaurantId);
+      if (state.cart.length > 0 && state.restaurantId !== payload.dish.restaurant_id && payload.toAdd) {
+        console.error("Non puoi aggiungere elementi da un altro ristorante.");
+        console.log("Current Restaurant ID: ", state.restaurantId);
+        console.log("Attempted to Add Dish from Restaurant ID: ", payload.dish.restaurant_id);
+        return;
+      }
 
-       //calculating the total
-        state.cartTotal = state.cart.reduce((accumulator, object) => {
-          return parseFloat(accumulator) + parseFloat(object.price*object.qty);
-        }, 0);
+      if (payload.toAdd) {
+        state.cart.push(payload.dish);
+        state.restaurantId = payload.dish.restaurant_id;
+        console.log("Added Dish, Restaurant ID Set To: ", state.restaurantId);
+      } else {
+        state.cart = state.cart.filter(obj => obj.id !== payload.dish.id);
+        if (state.cart.length === 0) {
+          state.restaurantId = null;
+          console.log("Removed Last Dish, Restaurant ID Reset To: ", state.restaurantId);
+        } else {
+          console.log("Removed Dish, Restaurant ID Remains: ", state.restaurantId);
+        }
+      }
 
-      //saving in web storage
-        localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
-        localStorage.setItem('cart',JSON.stringify(state.cart));
-      },
+      state.cartTotal = state.cart.reduce((accumulator, object) =>
+        parseFloat(accumulator) + parseFloat(object.price * object.qty), 0);
+
+      localStorage.setItem('cartTotal', JSON.stringify(state.cartTotal));
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+      localStorage.setItem('restaurantId', JSON.stringify(state.restaurantId));
+      console.log("Cart Updated, Current Restaurant ID: ", state.restaurantId); // Aggiunto questo console log
+    },
+    updateCart(state, payload) {
+      state.cart.find(o => o.id === payload.dish.id).qty = payload.dish.qty;
+
+      state.cartTotal = state.cart.reduce((accumulator, object) =>
+        parseFloat(accumulator) + parseFloat(object.price * object.qty), 0);
+
+      localStorage.setItem('cartTotal', JSON.stringify(state.cartTotal));
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+      console.log("Updated Cart, Current Restaurant ID: ", state.restaurantId); // Aggiunto questo console log
+    },
   },
-  actions: {},
+  actions: {
+    async fetchRestaurantId({ commit }, restaurantId) {
+      try {
+        console.log("Fetching restaurant ID:", restaurantId); // Verifica l'ID del ristorante che stai cercando di recuperare
+
+        const response = await axios.get(`http://127.0.0.1:8000/api/restaurants/${restaurantId}`);
+        console.log("API Response:", response.data); // Verifica la risposta completa della chiamata API
+
+        const restaurant = response.data.restaurant;
+        console.log("Fetched restaurant:", restaurant); // Verifica il ristorante estratto dalla risposta API
+
+        commit('setRestaurantId', restaurant.id); // Assicurati che l'ID del ristorante venga impostato nel Vuex store
+      } catch (error) {
+        console.error('Errore durante il recupero dell\'ID del ristorante:', error);
+      }
+    },
+    async checkAndAddToCart({ state, commit }, payload) {
+      if (state.restaurantId && state.restaurantId !== payload.dish.restaurant_id) {
+        if (confirm("Stai cercando di aggiungere un elemento da un altro ristorante. Vuoi svuotare il carrello?")) {
+          commit('clearCart');
+        } else {
+          return;
+        }
+      }
+      commit('addRemoveCart', payload);
+    },
+  },
   modules: {},
-})
+});
