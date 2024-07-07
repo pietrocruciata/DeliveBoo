@@ -55,7 +55,7 @@ export default {
 
     &:hover {
         transform: scale(1.02);
-        box-shadow: 1px 1px 8px 3px $brand-orange;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .type-pill {
