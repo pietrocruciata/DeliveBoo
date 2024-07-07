@@ -1,13 +1,34 @@
 <template>
-    <div v-if="dish" class="input-group plus-minus">
-        <button class="btn btn-outline-secondary" :class="loading ? 'disabled' : ''" @click="addOrRemove(-1)"
-            type="button" id="button-addon1">-</button>
-        <input type="number" v-model="qty" disabled class="form-control form-control-sm" placeholder=""
-            aria-label="Example text with button addon" aria-describedby="button-addon1">
-        <button class="btn btn-outline-secondary" :class="loading ? 'disabled' : ''" @click="addOrRemove(1)"
-            type="button" id="button-addon1">+</button>
+
+
+
+
+    <div v-if="dish">
+        <div class="justify-content-center input-group plus-minus">
+            <button class="btn btn-outline-secondary" :class="loading ? 'disabled' : ''" @click="addOrRemove(-1)"
+                type="button" id="button-addon1">-</button>
+            <input type="number" v-model="qty" disabled class="form-control form-control-sm" placeholder=""
+                aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <button class="btn btn-outline-secondary" :class="loading ? 'disabled' : ''" @click="addOrRemove(1)"
+                type="button" id="button-addon1">+</button>
+
+        </div>
     </div>
+
+
+
+
+
+
+
 </template>
+
+
+
+
+
+
+
 
 <script>
 import { toast } from 'vue3-toastify';
@@ -48,7 +69,7 @@ export default {
                     await this.$store.commit('updateCart', { dish: this.dish });
                     toast.success('Carrello aggiornato', {
                         autoClose: 1000,
-                        position: 'center-center'
+                        position: 'top-center'
                     });
                 } else {
                     toast.warning('Hai raggiunto il limite', {
@@ -66,8 +87,42 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@use '../style/partials/variables' as *;
+
 .plus-minus input {
     max-width: 50px;
+}
+
+.custom-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+
+.custom-pill {
+    background-color: $brand-orange;
+    width: 100px;
+    height: 45px;
+    border-radius: 100px;
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
+    user-select: none;
+}
+
+.rounded-circle {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $brand-orange;
 }
 </style>

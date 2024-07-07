@@ -1,8 +1,12 @@
 <template>
-    <button type="button" @click="addOrRemove()" class="cart-btn btn btn-sm btn-outline-secondary me-2">
-        <font-awesome-icon :icon="['fas', toAdd ? 'cart-shopping' : 'cart-check']" />
-    </button>
-    <CartAddRemove v-if="!toAdd" :dish="item" />
+    <div class="d-flex align-items-center mb-4 gap-4 mx-3">
+        <button type="button" @click="addOrRemove()" class="btn custom-pill">
+            {{ toAdd ? 'Aggingi' : 'Cancella' }}
+            <!-- <font-awesome-icon :icon="['fas', toAdd ? 'cart-shopping' : 'cart-shopping']" /> -->
+        </button>
+        <CartAddRemove v-if="!toAdd" :dish="item" />
+
+    </div>
 </template>
 
 <script>
@@ -35,8 +39,11 @@ export default {
 
             this.$store.commit('addRemoveCart', { dish: this.item, toAdd: this.toAdd });
 
-            let toastMsg = this.toAdd ? 'Added to cart' : 'Removed from cart';
-            toast(toastMsg, { autoClose: 1000 });
+            let toastMsg = this.toAdd ? 'Aggiunto al carrello' : 'Rimosso dal carello';
+            toast(toastMsg, {
+                autoClose: 1000,
+                position: 'top-center'
+            });
 
             this.toAdd = !this.toAdd;
         },
@@ -55,9 +62,30 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .cart-btn {
     width: 40px;
     height: 38px;
+}
+
+.rounded-circle {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAAF4D;
+}
+
+.custom-pill {
+    background-color: #FAAF4D;
+    width: 100px;
+    height: 45px;
+    border-radius: 100px;
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
+    user-select: none;
 }
 </style>

@@ -14,7 +14,9 @@
                     <p class="m-0 description-air">{{ dish.description }}</p>
                 </div>
             </div>
-            <CartBTN :dish="dish"/>
+            <CartBTN :dish="dish" />
+
+
             <!-- <div class="d-flex justify-content-center mb-3">
                 <button class="btn mt-auto rounded-circle" :class="{ 'd-none': quantity > 0 }" @click="add">+</button>
 
@@ -24,7 +26,9 @@
                     <div :class="{ 'd-none': quantity < 1 }">{{ quantity }}</div>
                     <button class="custom-btn" :class="{ 'd-none': quantity < 1 }" @click="add">+</button>
                 </div>
-            </div> -->
+            </div>  -->
+
+
             <div class="availabile-badge d-flex justify-content-center align-items-center p-1"
                 :class="{ 'd-none': dish.availability == true }">disponibile a breve</div>
         </div>
@@ -35,7 +39,7 @@
 import CartBTN from '../components/CartBTN.vue'
 
 export default {
-    components :{CartBTN},
+    components: { CartBTN },
     props: {
         dish: {
             type: Object,
@@ -52,17 +56,7 @@ export default {
 
 
     methods: {
-        add() {
-            this.quantity++
-            console.log(this.quantity)
-            return this.quantity
-        },
 
-        subtract() {
-            this.quantity--
-            console.log(this.quantity)
-            return this.quantity
-        },
         convertText(inputString) {
             return inputString?.replace("\\uploads", '').replace("uploads", '');
         },
@@ -85,6 +79,12 @@ export default {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.image-h {
+    height: 200px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
 .custom-btn {
     background: none;
     border: none;
@@ -95,11 +95,6 @@ export default {
     outline: inherit;
 }
 
-.image-h {
-    height: 200px;
-    max-width: 100%;
-    object-fit: cover;
-}
 
 .custom-pill {
     background-color: $brand-orange;
