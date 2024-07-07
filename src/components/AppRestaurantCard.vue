@@ -1,21 +1,19 @@
 <template>
-    <div class="">
-        <div class="card card_restaurant">
-            <img :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="" class="img-size">
-            <div class="card-body">
-                <h3 class="card-title">{{ restaurant.name }}</h3>
-                <p>{{ restaurant.description }}</p>
-                <p><strong>Indirizzo:</strong> {{ restaurant.address }}</p>
-                <p><strong>Email:</strong> {{ restaurant.email }}</p>
-                <div class="">
-                    <ul class="d-flex gap-3 justify-content-center p-0 m-0">
-                        <li v-for="(type, j) in restaurant.types" :key="j">
-                            <div class="type-pill">
-                                <p class="m-0 type_label"><strong>{{ type.label }}</strong></p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+    <div class="card card_restaurant">
+        <img :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="" class="img-size">
+        <div class="card-body">
+            <h3 class="card-title">{{ restaurant.name }}</h3>
+            <p>{{ restaurant.description }}</p>
+            <p><strong>Indirizzo:</strong> {{ restaurant.address }}</p>
+            <p><strong>Email:</strong> {{ restaurant.email }}</p>
+            <div class="">
+                <ul class="d-flex gap-3 justify-content-center p-0 m-0">
+                    <li v-for="(type, j) in restaurant.types" :key="j">
+                        <div class="type-pill">
+                            <p class="m-0 type_label"><strong>{{ type.label }}</strong></p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

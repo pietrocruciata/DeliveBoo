@@ -16,19 +16,6 @@
             </div>
             <CartBTN :dish="dish" />
 
-
-            <!-- <div class="d-flex justify-content-center mb-3">
-                <button class="btn mt-auto rounded-circle" :class="{ 'd-none': quantity > 0 }" @click="add">+</button>
-
-                <div class="d-flex justify-content-center align-items-center gap-2 custom-pill"
-                    :class="{ 'd-none': quantity < 1 }">
-                    <button class="custom-btn" :class="{ 'd-none': quantity < 1 }" @click="subtract">-</button>
-                    <div :class="{ 'd-none': quantity < 1 }">{{ quantity }}</div>
-                    <button class="custom-btn" :class="{ 'd-none': quantity < 1 }" @click="add">+</button>
-                </div>
-            </div>  -->
-
-
             <div class="availabile-badge d-flex justify-content-center align-items-center p-1"
                 :class="{ 'd-none': dish.availability == true }">disponibile a breve</div>
         </div>
@@ -70,7 +57,7 @@ export default {
 
 
 .card-h {
-    height: 550px;
+    height: 480px;
     // width: 300px;
 }
 

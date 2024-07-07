@@ -29,9 +29,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', name: 'Home' ,component: AppHome },
-        { path: '/restaurant/:id', name: 'restaurant.show', component: AppRestaurant },
-        { path:'/cart', name:'Cart', component: AppCart }
+        { path: '/', name: 'Home', component: AppHome },
+        { path: '/restaurant/:id', name: 'restaurant.show', component: AppRestaurant, },
+        { path: '/cart', name: 'Cart', component: AppCart }
 
     ],
 
