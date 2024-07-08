@@ -14,7 +14,12 @@
                     <p class="m-0 description-air">{{ dish.description }}</p>
                 </div>
             </div>
-            <CartBTN :dish="dish" />
+            <template v-if="dish.availability == true">
+                <CartBTN :dish="dish" />
+                    
+                
+            </template>
+            
 
             <div class="availabile-badge d-flex justify-content-center align-items-center p-1"
                 :class="{ 'd-none': dish.availability == true }">disponibile a breve</div>
