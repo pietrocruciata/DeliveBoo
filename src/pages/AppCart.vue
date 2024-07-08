@@ -8,9 +8,20 @@
 
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h5 class="mb-3"><router-link :to="{ name: 'Home' }" class="text-body"><i
-                                                class="fas fa-long-arrow-alt-left me-2"></i>Continua a fare
-                                            acquisti</router-link></h5>
+                                    <template v-if="$store.state.restaurantId">
+                                        <h5 class="mb-3"><router-link
+                                                :to="{ name: 'restaurant.show', params: { id: $store.state.restaurantId } }"
+                                                class="text-body"><i
+                                                    class="fas fa-long-arrow-alt-left me-2"></i>Continua a
+                                                fare
+                                                acquisti</router-link></h5>
+                                    </template>
+
+                                    <template v-if="!$store.state.restaurantId">
+                                        <h5 class="mb-3"><router-link :to="{ name: 'Home' }" class="text-body"><i
+                                                    class="fas fa-long-arrow-alt-left me-2"></i>Torna ai
+                                                ristoranti</router-link></h5>
+                                    </template>
                                     <hr>
 
                                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -96,8 +107,10 @@
 </template>
 <script>
 import CartAddRemove from '../components/CartAddRemove.vue';
+import AppRestaurant from '../pages/AppRestaurant.vue';
+// import { createStore } from '..store/index.js'
 export default {
-    components: { CartAddRemove },
+    components: { CartAddRemove, AppRestaurant },
     methods: {
         removeItem(item) {
             this.$store.commit('addRemoveCart', { dish: item, toAdd: false })

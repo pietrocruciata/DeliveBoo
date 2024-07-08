@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex align-items-center mb-4 gap-4 mx-3">
         <button type="button" @click="addOrRemove()" class="btn custom-pill">
-            {{ toAdd ? 'Aggingi' : 'Cancella' }}
+            {{ toAdd ? 'Aggiungi' : 'Cancella' }}
             <!-- <font-awesome-icon :icon="['fas', toAdd ? 'cart-shopping' : 'cart-shopping']" /> -->
         </button>
         <CartAddRemove v-if="!toAdd" :dish="item" />
@@ -11,6 +11,7 @@
 
 <script>
 import CartAddRemove from './CartAddRemove.vue';
+
 import { toast } from 'vue3-toastify';
 
 export default {
