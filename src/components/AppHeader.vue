@@ -13,7 +13,7 @@
                 <RouterLink to="/"><font-awesome-icon :icon="['fas', 'house']" /></RouterLink>
             </div>
             <div>
-                <a href="#"><font-awesome-icon :icon="['fas', 'user']" /></a>
+                <a href="http://127.0.0.1:8000/" target="_blank"><font-awesome-icon :icon="['fas', 'user']"  /></a>
             </div>
             <div class="position-relative">
                 <router-link class="nav-link" :class="$route.name == 'Cart' ? 'active' : ''" aria-current="page"
