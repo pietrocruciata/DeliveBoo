@@ -50,7 +50,7 @@ export default createStore({
       } else {
         state.cart = state.cart.filter(obj => obj.id !== payload.dish.id);
         if (state.cart.length === 0) {
-          state.restaurantId = null;
+          
           console.log("Removed Last Dish, Restaurant ID Reset To: ", state.restaurantId);
         } else {
           console.log("Removed Dish, Restaurant ID Remains: ", state.restaurantId);
