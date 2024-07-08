@@ -52,11 +52,11 @@
                                                 <div class="d-flex flex-row align-items-center">
                                                     <div>
                                                         <h5 class="mb-0"><i class="bi bi-currency-dollar"></i>{{
-                                        item.price * item.qty }} &euro;</h5>
+                                                            item.price * item.qty }} &euro;</h5>
                                                         <small v-if="item.hasDiscount"
                                                             class="text-muted text-decoration-line-through"><i
                                                                 class="bi bi-currency-dollar"></i>{{
-                                        item.price }}</small>
+                                                            item.price }}</small>
                                                     </div>
                                                     <a role="button" @click="removeItem(item)" class="ms-4"
                                                         style="color: #cecece;"><font-awesome-icon
@@ -86,11 +86,11 @@
                                                 <p class="mb-2"><i class="bi bi-currency-dollar"></i>{{
                                                     $store.state.cartTotal }} &euro;</p>
                                             </div>
-
-                                            <button type="button" class="btn  btn-custom  btn-block btn-lg">
-                                                Vai alla cassa
-                                            </button>
-
+                                            <router-link :to="{ name: 'checkout' }">
+                                                <button type="button" class="btn  btn-custom  btn-block btn-lg">
+                                                    Vai alla cassa
+                                                </button>
+                                            </router-link>
                                         </div>
                                     </div>
 

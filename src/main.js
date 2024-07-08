@@ -24,6 +24,7 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 
 //ROUTES
 import { createRouter, createWebHistory } from 'vue-router'
+import AppCheckout from './pages/AppCheckout.vue'
 
 
 const router = createRouter({
@@ -31,7 +32,9 @@ const router = createRouter({
     routes: [
         { path: '/', name: 'Home', component: AppHome },
         { path: '/restaurant/:id', name: 'restaurant.show', component: AppRestaurant, },
-        { path: '/cart', name: 'Cart', component: AppCart }
+        { path: '/cart', name: 'Cart', component: AppCart },
+        { path: '/checkout', name: 'checkout', component: AppCheckout }
+        
 
     ],
 

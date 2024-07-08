@@ -54,7 +54,9 @@ export default createStore({
           console.log("Removed Last Dish, Restaurant ID Reset To: ", state.restaurantId);
         } else {
           console.log("Removed Dish, Restaurant ID Remains: ", state.restaurantId);
+         
         }
+       
       }
 
       state.cartTotal = state.cart.reduce((accumulator, object) =>
@@ -77,6 +79,7 @@ export default createStore({
       localStorage.setItem('cartTotal', JSON.stringify(state.cartTotal));
       localStorage.setItem('cart', JSON.stringify(state.cart));
       console.log("Updated Cart, Current Restaurant ID: ", state.restaurantId);
+      
     },
   },
   actions: {
