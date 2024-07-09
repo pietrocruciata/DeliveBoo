@@ -6,8 +6,8 @@
             <p>{{ restaurant.description }}</p>
             <p><strong>Indirizzo:</strong> {{ restaurant.address }}</p>
             <p><strong>Email:</strong> {{ restaurant.email }}</p>
-            <div class="">
-                <ul class="d-flex gap-3 justify-content-center p-0 m-0">
+            <div class="overflow">
+                <ul class="d-flex gap-3 p-0 m-0">
                     <li v-for="(type, j) in restaurant.types" :key="j">
                         <div class="type-pill">
                             <p class="m-0 type_label"><strong>{{ type.label }}</strong></p>
@@ -65,8 +65,14 @@ export default {
         .type_label {
             color: $brand-orange;
             color: white;
+            width: max-content;
         }
     }
+
+}
+
+.overflow {
+    overflow: auto;
 
 }
 
