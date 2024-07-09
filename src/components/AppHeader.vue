@@ -1,6 +1,6 @@
 <template>
 
-    <div class="d-flex bg_cream  p-2 justify-content-around align-items-center">
+    <div class="d-flex bg_cream  p-2  justify-content-around align-items-center">
 
 
         <div class="c-orange d-flex">
@@ -13,7 +13,7 @@
                 <RouterLink to="/"><font-awesome-icon :icon="['fas', 'house']" /></RouterLink>
             </div>
             <div>
-                <a href="http://127.0.0.1:8000/" target="_blank"><font-awesome-icon :icon="['fas', 'user']"  /></a>
+                <a href="http://127.0.0.1:8000/" target="_blank"><font-awesome-icon :icon="['fas', 'user']" /></a>
             </div>
             <div class="position-relative">
                 <router-link class="nav-link" :class="$route.name == 'Cart' ? 'active' : ''" aria-current="page"
@@ -21,7 +21,7 @@
                     <font-awesome-icon class="chat-icon" :icon="['fas', 'cart-shopping']" />
                     <span v-if="$store.getters.totalQuantity > 0"
                         class="align-items-center justify-content-center translate-middle badge rounded-pill bg-danger badge">
-                    {{ $store.getters.totalQuantity }}
+                        {{ $store.getters.totalQuantity }}
                     </span>
                 </router-link>
             </div>
@@ -32,11 +32,11 @@
 
 <script>
 export default {
-data(){
-    return{
-        
+    data() {
+        return {
+
+        }
     }
-}
 }
 </script>
 

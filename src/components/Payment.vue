@@ -1,54 +1,63 @@
 <template>
-    <div>
+    <div class="container">
         <form id="payment-form" @submit.prevent="handleSubmit" action='http://127.0.0.1:8000/api/order/make/payment'
             method="post">
-            <!-- Name field with pattern restriction for letters only -->
-            <div class="mb-3">
-                <label for="customer_name" class="form-label">Nome e Cognome: *</label>
-                <input type="text" class="form-control" id="customer_name" name="customer_name" pattern="[A-Za-z\s]+"
-                    required title="Name should only contain letters." />
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="customer_name" class="form-label">Nome e Cognome: *</label>
+                        <input type="text" class="form-control" id="customer_name" name="customer_name"
+                            pattern="[A-Za-z\s]+" required title="Name should only contain letters." />
+                    </div>
+
+                    <!-- Email field with built-in email validation -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email: *</label>
+                        <input type="email" class="form-control" id="email" name="email" required />
+                    </div>
+
+                    <!-- Phone field with pattern restriction for phone numbers -->
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">Numero di telefono: *</label>
+                        <input type="tel" class="form-control" id="phone_number" name="phone_number" pattern="\d{10}"
+                            required title="Phone number should be 10 digits." />
+                    </div>
+
+                    <!-- Address field with minlength and maxlength attributes -->
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Indirizzo: *</label>
+                        <input type="text" class="form-control" id="address" name="address" minlength="10"
+                            maxlength="250" required />
+                    </div>
+
+                    <!-- Price field with minimum and maximum value restrictions -->
+                    <div class="mb-3">
+                        <label for="total_price" class="form-label">Totale:</label>
+                        <input type="float" class="form-control" id="total_price" name="total_price"
+                            :value="calcTotal()" required readonly />
+                    </div>
+                    <!-- Name field with pattern restriction for letters only -->
+
+                </div>
+                <div class="col-6">
+                    <input type="hidden" name="orderData" :value="JSON.stringify($store.state.cart)" />
+                    <!-- BRAINTREE DATA -->
+                    <input type="hidden" name="amount" :value="calcTotal()" />
+                    <input type="hidden" name="token" :value="authorization" />
+
+                    <div id="dropin-container"></div>
+                    <button type="submit" class="btn btn-primary mb-2">Effettua il pagamento</button>
+                </div>
             </div>
 
-            <!-- Email field with built-in email validation -->
-            <div class="mb-3">
-                <label for="email" class="form-label">Email: *</label>
-                <input type="email" class="form-control" id="email" name="email" required />
-            </div>
 
-            <!-- Phone field with pattern restriction for phone numbers -->
-            <div class="mb-3">
-                <label for="phone_number" class="form-label">Numero di telefono: *</label>
-                <input type="tel" class="form-control" id="phone_number" name="phone_number" pattern="\d{10}" required
-                    title="Phone number should be 10 digits." />
-            </div>
 
-            <!-- Address field with minlength and maxlength attributes -->
-            <div class="mb-3">
-                <label for="address" class="form-label">Indirizzo: *</label>
-                <input type="text" class="form-control" id="address" name="address" minlength="10" maxlength="250"
-                    required />
-            </div>
-
-            <!-- Price field with minimum and maximum value restrictions -->
-            <div class="mb-3">
-                <label for="total_price" class="form-label">Totale:</label>
-                <input type="float" class="form-control" id="total_price" name="total_price" :value="calcTotal()"
-                    required readonly />
-            </div>
-            <input type="hidden" name="orderData" :value="JSON.stringify($store.state.cart)" />
-            <!-- BRAINTREE DATA -->
-            <input type="hidden" name="amount" :value="calcTotal()" />
-            <input type="hidden" name="token" :value="authorization" />
-
-            <div id="dropin-container"></div>
-            <button type="submit" class="btn btn-primary mb-2">Effettua il pagamento</button>
         </form>
     </div>
 </template>
 <style scoped>
 form {
-    max-width: 500px;
-    margin: 0 auto;
+    margin-top: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -87,7 +96,8 @@ input[type="hidden"] {
 }
 
 .btn-primary {
-    background-color: #007bff;
+    margin-top: 20px;
+    background-color: gray;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -97,7 +107,7 @@ input[type="hidden"] {
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #FAAF4D;
 }
 
 
