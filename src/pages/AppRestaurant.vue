@@ -1,20 +1,34 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <img :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="">
-            </div>
-            <div class="col-6 d-flex flex-column">
-                <div>{{ restaurant.name }}</div>
-                <div>{{ restaurant.email }}</div>
-                <div>{{ restaurant.address }}</div>
+        <RouterLink to="/" class="back-btn my-3"><font-awesome-icon :icon="['fas', 'angle-left']" /></RouterLink>
+        <div class="container pt-5">
+            <div class="card restaurant_card">
+                <div class="row">
+
+                    <div class="col-6 ">
+                        <img :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="">
+
+                    </div>
+                    <div class="col-6">
+                        <div class="card-body  px-2">
+                            <h5 class="card-title my-3"><strong>Nome del ristorante: </strong> {{ restaurant.name }}
+                            </h5>
+                            <p><strong>Email: </strong> {{ restaurant.email }}</p>
+                            <p><strong>Indirizzo: </strong> {{ restaurant.address }}</p>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
 
+
+
+
     <div class="container mt-3 fs-3 d-flex align-items-center justify-content-center">Le Nostre Specialità</div>
     <div class="container mt-3">
-        <RouterLink to="/" class="back-btn"><font-awesome-icon :icon="['fas', 'angle-left']" /></RouterLink>
         <div class="row">
             <template v-for="dish in dishes " key="dish.id">
                 <DishCard :dish="dish"></DishCard>
@@ -87,5 +101,15 @@ export default {
         background-color: $brand-orange;
         color: white;
     }
+}
+
+.image-h {
+    height: 400px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.restaurant_card {
+    box-shadow: 0 0 8px lightgrey;
 }
 </style>

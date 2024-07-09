@@ -43,7 +43,7 @@ export default {
             let toastMsg = this.toAdd ? 'Aggiunto al carrello' : 'Rimosso dal carello';
             toast(toastMsg, {
                 autoClose: 1000,
-                position: 'top-center'
+                position: 'top-right'
             });
 
             this.toAdd = !this.toAdd;

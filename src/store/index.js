@@ -35,6 +35,7 @@ export default createStore({
       console.log("Cart Cleared, Restaurant ID Reset: ", state.restaurantId);
     },
     addRemoveCart(state, payload) {
+      // state.restaurantId = null;
       console.log("Restaurant ID before mutation:", state.restaurantId);
       if (state.cart.length > 0 && state.restaurantId !== payload.dish.restaurant_id && payload.toAdd) {
         console.error("Non puoi aggiungere elementi da un altro ristorante.");

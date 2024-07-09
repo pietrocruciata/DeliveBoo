@@ -47,18 +47,18 @@ export default {
         async addOrRemove(number) {
             this.loading = true;
             if (number === 1) {
-                if (this.qty < 10) {
+                if (this.qty < 100) {
                     this.qty++;
                     this.dish.qty = this.qty;
                     await this.$store.commit('updateCart', { dish: this.dish });
                     toast.success('Carrello aggiornato', {
                         autoClose: 1000,
-                        position: 'top-center'  // Posiziona il toast al centro della pagina
+                        position: 'top-right'  // Posiziona il toast al centro della pagina
                     });
                 } else {
                     toast.warning('Hai raggiunto il limite', {
                         autoClose: 3000,
-                        position: 'top-center'
+                        position: 'top-right'
                     });
                 }
             }
@@ -69,12 +69,12 @@ export default {
                     await this.$store.commit('updateCart', { dish: this.dish });
                     toast.success('Carrello aggiornato', {
                         autoClose: 1000,
-                        position: 'top-center'
+                        position: 'top-right'
                     });
                 } else {
                     toast.warning('Hai raggiunto il limite', {
                         autoClose: 3000,
-                        position: 'top-center'
+                        position: 'top-right'
                     });
                 }
             }
