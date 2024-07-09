@@ -1,20 +1,21 @@
 <template>
     <div class="success-container">
         <div class="success-message">
-            <h1>Pagamento Effettuato con Successo!</h1>
-            <p>Grazie per il tuo acquisto. Il tuo pagamento è stato elaborato correttamente.</p>
-            <router-link to="/" class="home-link">Torna alla Home</router-link>
+            <h1>Pagamento Fallito</h1>
+            <p>Siamo spiacenti, ma il tuo pagamento non è andato a buon fine.</p>
+            <p>Per favore, prova di nuovo o contatta il supporto clienti per assistenza.</p>
+            <router-link to="/cart" class="home-link">Torna al carrello</router-link>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "PageSucces"
+    name: "PageError"
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .success-container {
     display: flex;
     justify-content: center;
@@ -26,14 +27,14 @@ export default {
 .success-message {
     text-align: center;
     padding: 20px;
-    border: 2px solid #4caf50;
+    border: 2px solid #FE8B79;
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .success-message h1 {
-    color: #4caf50;
+    color: #FE8B79;
     margin-bottom: 10px;
 }
 
@@ -45,13 +46,13 @@ export default {
     display: inline-block;
     padding: 10px 20px;
     color: white;
-    background-color: #4caf50;
+    background-color: #FE8B79;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .home-link:hover {
-    background-color: #45a049;
+    background-color: #FE8B79;
 }
 </style>

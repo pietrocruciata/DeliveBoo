@@ -1,10 +1,7 @@
 <template>
-    <!-- FORM -->
     <div>
-        <form id="payment-form" action='http://127.0.0.1:8000/api/order/make/payment' method="post">
-            
-
-
+        <form id="payment-form" @submit.prevent="handleSubmit" action='http://127.0.0.1:8000/api/order/make/payment'
+            method="post">
             <!-- Name field with pattern restriction for letters only -->
             <div class="mb-3">
                 <label for="customer_name" class="form-label">Nome e Cognome: *</label>
@@ -32,13 +29,11 @@
                     required />
             </div>
 
-
-
             <!-- Price field with minimum and maximum value restrictions -->
             <div class="mb-3">
                 <label for="total_price" class="form-label">Totale:</label>
-                <input type="float" class="form-control" id="total_price" name="total_price" :value="calcTotal()" required
-                    readonly />
+                <input type="float" class="form-control" id="total_price" name="total_price" :value="calcTotal()"
+                    required readonly />
             </div>
             <input type="hidden" name="orderData" :value="JSON.stringify($store.state.cart)" />
             <!-- BRAINTREE DATA -->
@@ -46,21 +41,26 @@
             <input type="hidden" name="token" :value="authorization" />
 
             <div id="dropin-container"></div>
-            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            <button type="submit" class="btn btn-primary mb-2">Effettua il pagamento</button>
         </form>
     </div>
-
 </template>
 
 <script>
+import dropin from 'braintree-web-drop-in';
 
 export default {
     props: { authorization: { required: true, type: String }, myOrder: Object },
+    data() {
+        return {
+            instance: null
+        };
+    },
     watch: {
         authorization: {
             handler() {
                 if (this.authorization) {
-                    this.dropin();
+                    this.initDropin();
                 }
             },
             deep: true,
@@ -70,67 +70,66 @@ export default {
         calcTotal() {
             let tot = 0;
             this.$store.state.cart.forEach(element => {
-                tot = tot + (element.qty * element.price)
+                tot += element.qty * element.price;
             });
             return tot;
         },
-        dropin() {
-            console.log;
-            var button = document.querySelector("#submit-button");
-
-            braintree.dropin.create(
-                {
-                    authorization: this.authorization,
-                    selector: "#dropin-container",
-                },
-                function (err, instance) {
-                    if (err) {
-                        console.error(err);
-                        return;
-                    }
-                    button.addEventListener("click", function () {
-                        instance.requestPaymentMethod(function (err, payload) {
-                            if (err) {
-                            } else {
-                            }
-                        });
-                    });
+        initDropin() {
+            dropin.create({
+                authorization: this.authorization,
+                container: "#dropin-container",
+            }, (err, instance) => {
+                if (err) {
+                    console.error(err);
+                    return;
                 }
-            );
+                this.instance = instance;
+            });
         },
+        handleSubmit() {
+            if (!this.instance) {
+                console.error('Braintree instance non inizializzata');
+                return;
+            }
 
-        formCatch() {
-            document
-                .getElementById("payment-form")
-                .addEventListener("submit", function (e) {
-                    e.preventDefault(); // Previene il comportamento di default del form
+            this.instance.requestPaymentMethod((err, payload) => {
+                if (err) {
+                    console.error(err);
+                    this.$router.push({ path: '/error' });
+                    return;
+                }
 
-                    var formData = new FormData(this);
-                    /*  let loading = document.getElementById("loading");
-                     loading.style.display = "block"; */
-                    fetch(this.action, {
-                        method: "POST",
-                        body: formData,
+                const form = document.querySelector("#payment-form");
+                const nonceInput = document.createElement("input");
+                nonceInput.setAttribute("type", "hidden");
+                nonceInput.setAttribute("name", "payment_method_nonce");
+                nonceInput.setAttribute("value", payload.nonce);
+                form.appendChild(nonceInput);
+
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: "POST",
+                    body: formData,
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            this.$router.push({ path: '/succes' });
+                        } else {
+                            console.error("Errore nel processare il pagamento");
+                            this.$router.push({ path: '/error' });
+                        }
                     })
-                        .then((response) => response.json())
-                        .then((data) => {
-                            if (data.success) {
+                    .catch(error => {
+                        console.error("Errore nel processare il pagamento", error);
+                        this.$router.push({ path: '/error' });
+                    });
+                this.$store.state.cart = [];
 
-                                console.log("successo");
+            });
 
-                            } else {
-
-                                console.log("fail");
-
-                            }
-                        })
-                        .catch((error) => {
-                            console.log("fail");
-                        });
-                });
-        },
-    },
-}
-
-
+        }
+    }
+};
 </script>
