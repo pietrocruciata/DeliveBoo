@@ -2,9 +2,33 @@
     <div class="d-flex align-items-center mb-4 gap-4 mx-3">
         <button type="button" @click="addOrRemove()" class="btn custom-pill">
             {{ toAdd ? 'Aggiungi' : 'Cancella' }}
-            <!-- <font-awesome-icon :icon="['fas', toAdd ? 'cart-shopping' : 'cart-shopping']" /> -->
+
         </button>
         <CartAddRemove v-if="!toAdd" :dish="item" />
+
+        <!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{item.id}}">
+            Delete
+        </button>
+
+        <div class="modal fade" id="exampleModal{{item.id}}" tabindex="-1"
+            aria-labelledby="exampleModalLabel{{item.id}}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel{{item.id}}">Attention</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Do you really want to delete {{ item.name }}?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
 
     </div>
 </template>
@@ -21,19 +45,22 @@ export default {
         return {
             toAdd: true,
             item: {},
+            confirmDeleteCart: false,
         };
     },
     methods: {
         async addOrRemove() {
             if (!this.item.qty) {
-                this.item.qty = 1; // Assicurati che 'qty' sia definito correttamente
+                this.item.qty = 1;
             }
-            console.log("Clicked, Dish:", this.item); // Aggiungi console log per tracciare 'item'
+            console.log("Clicked, Dish:", this.item);
 
-            // Controlla se il ristorante corrente è definito nel Vuex store
+
             if (this.$store.state.restaurantId && this.$store.state.restaurantId !== this.item.restaurant_id && this.toAdd) {
-                if (confirm("Stai cercando di aggiungere un elemento da un altro ristorante. Vuoi svuotare il carrello?")) {
+                if (this.confirmDeleteCart == true) {
                     this.$store.commit('clearCart'); // Svuota il carrello se l'utente conferma
+                    this.$store.commit('addRemoveCart', { dish: this.item, toAdd: this.toAdd });
+                    this.confirmDeleteCart = false
                 }
                 return;
             }
@@ -43,7 +70,7 @@ export default {
             let toastMsg = this.toAdd ? 'Aggiunto al carrello' : 'Rimosso dal carello';
             toast(toastMsg, {
                 autoClose: 1000,
-                position: 'top-right'
+                position: 'bottom-right'
             });
 
             this.toAdd = !this.toAdd;
@@ -54,9 +81,9 @@ export default {
         let obj = cart.find(o => o.id === this.dish.id);
         if (obj) {
             this.toAdd = false;
-            this.item = { ...obj }; // Copia dell'oggetto per evitare modifiche dirette a oggetti condivisi
+            this.item = { ...obj };
         } else {
-            this.item = { ...this.dish }; // Copia dell'oggetto per evitare modifiche dirette a oggetti condivisi
+            this.item = { ...this.dish };
             this.toAdd = true;
         }
     },

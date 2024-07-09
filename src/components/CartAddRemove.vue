@@ -53,12 +53,12 @@ export default {
                     await this.$store.commit('updateCart', { dish: this.dish });
                     toast.success('Carrello aggiornato', {
                         autoClose: 1000,
-                        position: 'top-right'  // Posiziona il toast al centro della pagina
+                        position: 'bottom-right'  // Posiziona il toast al centro della pagina
                     });
                 } else {
                     toast.warning('Hai raggiunto il limite', {
                         autoClose: 3000,
-                        position: 'top-right'
+                        position: 'bottom-right'
                     });
                 }
             }
@@ -69,12 +69,12 @@ export default {
                     await this.$store.commit('updateCart', { dish: this.dish });
                     toast.success('Carrello aggiornato', {
                         autoClose: 1000,
-                        position: 'top-right'
+                        position: 'bottom-right'
                     });
                 } else {
                     toast.warning('Hai raggiunto il limite', {
                         autoClose: 3000,
-                        position: 'top-right'
+                        position: 'bottom-right'
                     });
                 }
             }

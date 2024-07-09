@@ -41,7 +41,14 @@
             <input type="hidden" name="token" :value="authorization" />
 
             <div id="dropin-container"></div>
-            <button type="submit" class="btn btn-primary mb-2">Effettua il pagamento</button>
+            <<<<<<< HEAD <button type="submit" class="btn btn-primary mb-2">Effettua il pagamento</button>
+                =======
+                <button type="submit" class="btn btn-primary mb-2">
+                    <router-link to="/cart">
+                        Submit</router-link>
+
+                </button>
+                >>>>>>> 0083068d41582f717a1640ea9087791f8f22743e
         </form>
     </div>
 </template>
