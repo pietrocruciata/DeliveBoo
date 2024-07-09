@@ -124,8 +124,9 @@ export default {
                 return this.restaurants;
             } else {
                 return this.restaurants.filter(restaurant => {
-                    return restaurant.types.some(type => this.selectedType.includes(type.label));
-                });
+                    return this.selectedType.every(selectedTypeLabel => 
+                        restaurant.types.some(type => type.label === selectedTypeLabel)
+                )});
             }
         }
     },
