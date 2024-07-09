@@ -57,7 +57,7 @@ export default {
 
 
             if (this.$store.state.restaurantId && this.$store.state.restaurantId !== this.item.restaurant_id && this.toAdd) {
-                if (this.confirmDeleteCart == true) {
+                if (confirm('stai aggiungendo il piatto di un altro ristorante, vuoi svuotare il carrello?')) {
                     this.$store.commit('clearCart'); // Svuota il carrello se l'utente conferma
                     this.$store.commit('addRemoveCart', { dish: this.item, toAdd: this.toAdd });
                     this.confirmDeleteCart = false
