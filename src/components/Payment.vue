@@ -207,7 +207,7 @@ export default {
                         console.error("Errore nel processare il pagamento", error);
                         this.$router.push({ path: '/error' });
                     });
-                this.$store.state.cart = [];
+                    this.$store.commit('clearCart');
 
             });
 
