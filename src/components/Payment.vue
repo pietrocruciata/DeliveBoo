@@ -36,8 +36,8 @@
 
             <!-- Price field with minimum and maximum value restrictions -->
             <div class="mb-3">
-                <label for="price" class="form-label">Totale:</label>
-                <input type="float" class="form-control" id="price" name="price" :value="calcTotal()" required
+                <label for="total_price" class="form-label">Totale:</label>
+                <input type="float" class="form-control" id="total_price" name="total_price" :value="calcTotal()" required
                     readonly />
             </div>
             <input type="hidden" name="orderData" :value="JSON.stringify($store.state.cart)" />
