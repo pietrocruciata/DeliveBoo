@@ -4,6 +4,7 @@ import App from './App.vue'
 import AppHome from './pages/AppHome.vue'
 import AppRestaurant from './pages/AppRestaurant.vue'
 import AppCart from './pages/AppCart.vue'
+import PageSucces from './pages/PageSucces.vue'
 import store from "./store"
 
 //INSTALL FONT AWESOM
@@ -25,6 +26,7 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 //ROUTES
 import { createRouter, createWebHistory } from 'vue-router'
 import AppCheckout from './pages/AppCheckout.vue'
+import PageSucces from './pages/PageSucces.vue'
 
 
 const router = createRouter({
@@ -33,8 +35,10 @@ const router = createRouter({
         { path: '/', name: 'Home', component: AppHome },
         { path: '/restaurant/:id', name: 'restaurant.show', component: AppRestaurant, },
         { path: '/cart', name: 'Cart', component: AppCart },
-        { path: '/checkout', name: 'checkout', component: AppCheckout }
-        
+        { path: '/checkout', name: 'checkout', component: AppCheckout },
+        { path: '/success', name: 'PageSuccess', component: PageSucces }
+
+
 
     ],
 
