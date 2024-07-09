@@ -32,7 +32,7 @@ export default createStore({
       localStorage.removeItem('cart');
       localStorage.removeItem('cartTotal');
       localStorage.removeItem('restaurantId');
-      console.log("Cart Cleared, Restaurant ID Reset: ", state.restaurantId);
+      console.log("Cart Cleared, Restaurant ID Reset: ", state.restaurantId, state);
     },
     addRemoveCart(state, payload) {
       // state.restaurantId = null;
@@ -46,18 +46,19 @@ export default createStore({
 
       if (payload.toAdd) {
         state.cart.push(payload.dish);
+
         state.restaurantId = payload.dish.restaurant_id;
         console.log("Added Dish, Restaurant ID Set To: ", state.restaurantId);
       } else {
         state.cart = state.cart.filter(obj => obj.id !== payload.dish.id);
         if (state.cart.length === 0) {
-          
+
           console.log("Removed Last Dish, Restaurant ID Reset To: ", state.restaurantId);
         } else {
           console.log("Removed Dish, Restaurant ID Remains: ", state.restaurantId);
-         
+
         }
-       
+
       }
 
       state.cartTotal = state.cart.reduce((accumulator, object) =>
@@ -80,7 +81,7 @@ export default createStore({
       localStorage.setItem('cartTotal', JSON.stringify(state.cartTotal));
       localStorage.setItem('cart', JSON.stringify(state.cart));
       console.log("Updated Cart, Current Restaurant ID: ", state.restaurantId);
-      
+
     },
   },
   actions: {
@@ -103,12 +104,21 @@ export default createStore({
       if (state.restaurantId && state.restaurantId !== payload.dish.restaurant_id) {
         if (confirm("Stai cercando di aggiungere un elemento da un altro ristorante. Vuoi svuotare il carrello?")) {
           commit('clearCart');
+
+
+
         } else {
           return;
         }
       }
       commit('addRemoveCart', payload);
+
     },
+  },
+  getters: {
+    totalQuantity(state) {
+      return state.cart.reduce((total, item) => total + item.qty, 0);
+    }
   },
   modules: {},
 });

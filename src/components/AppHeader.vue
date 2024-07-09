@@ -19,9 +19,9 @@
                 <router-link class="nav-link" :class="$route.name == 'Cart' ? 'active' : ''" aria-current="page"
                     :to="{ name: 'Cart' }">
                     <font-awesome-icon class="chat-icon" :icon="['fas', 'cart-shopping']" />
-                    <span v-if="$store.state.cart.length > 0"
+                    <span v-if="$store.getters.totalQuantity > 0"
                         class="align-items-center justify-content-center translate-middle badge rounded-pill bg-danger badge">
-                        {{ $store.state.cart.length }}
+                    {{ $store.getters.totalQuantity }}
                     </span>
                 </router-link>
             </div>
@@ -32,7 +32,11 @@
 
 <script>
 export default {
-
+data(){
+    return{
+        
+    }
+}
 }
 </script>
 

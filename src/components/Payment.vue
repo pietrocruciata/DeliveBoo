@@ -2,7 +2,7 @@
     <!-- FORM -->
     <div>
         <form id="payment-form" action='http://127.0.0.1:8000/api/order/make/payment' method="post">
-            
+
 
 
             <!-- Name field with pattern restriction for letters only -->
@@ -37,8 +37,8 @@
             <!-- Price field with minimum and maximum value restrictions -->
             <div class="mb-3">
                 <label for="total_price" class="form-label">Totale:</label>
-                <input type="float" class="form-control" id="total_price" name="total_price" :value="calcTotal()" required
-                    readonly />
+                <input type="float" class="form-control" id="total_price" name="total_price" :value="calcTotal()"
+                    required readonly />
             </div>
             <input type="hidden" name="orderData" :value="JSON.stringify($store.state.cart)" />
             <!-- BRAINTREE DATA -->
@@ -46,7 +46,11 @@
             <input type="hidden" name="token" :value="authorization" />
 
             <div id="dropin-container"></div>
-            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            <button type="submit" class="btn btn-primary mb-2">
+                <router-link to="/cart">
+                    Submit</router-link>
+                
+            </button>
         </form>
     </div>
 
@@ -112,11 +116,11 @@ export default {
                         method: "POST",
                         body: formData,
                     })
-                        .then((response) => response.json())
+                        // .then((response) => response.json())
                         .then((data) => {
                             if (data.success) {
 
-                                console.log("successo");
+                                 '/cart' 
 
                             } else {
 
