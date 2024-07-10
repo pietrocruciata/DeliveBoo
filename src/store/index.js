@@ -56,22 +56,26 @@ export default createStore({
       } else {
         state.cart = state.cart.filter(obj => obj.id !== payload.dish.id);
         if (state.cart.length === 0) {
-
-          console.log("Removed Last Dish, Restaurant ID Reset To: ", state.restaurantId);
+          payload.dish.qty = 1
+          
         } else {
-          console.log("Removed Dish, Restaurant ID Remains: ", state.restaurantId);
+          payload.dish.qty = 1
+          
 
         }
 
       }
 
-      state.cartTotal = state.cart.reduce((accumulator, object) =>
-        parseFloat(accumulator) + parseFloat(object.price * object.qty), 0);
+      
+
+      state.cartTotal = state.cart.reduce((accumulator, object) => {
+        parseFloat(accumulator) + parseFloat(object.price * object.qty)}, 0);
 
       localStorage.setItem('cartTotal', JSON.stringify(state.cartTotal));
       localStorage.setItem('cart', JSON.stringify(state.cart));
       localStorage.setItem('restaurantId', JSON.stringify(state.restaurantId));
       console.log("Cart Updated, Current Restaurant ID: ", state.restaurantId);
+      
     },
     updateCart(state, payload) {
       let itemToUpdate = state.cart.find(o => o.id === payload.dish.id);
