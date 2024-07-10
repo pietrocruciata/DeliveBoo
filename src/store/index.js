@@ -32,8 +32,12 @@ export default createStore({
       localStorage.removeItem('cart');
       localStorage.removeItem('cartTotal');
       localStorage.removeItem('restaurantId');
+      
       console.log("Cart Cleared, Restaurant ID Reset: ", state.restaurantId, state);
+      console.log('localStorage',localStorage);
+      console.log('cart',state.cart);
     },
+    
     addRemoveCart(state, payload) {
       // state.restaurantId = null;
       console.log("Restaurant ID before mutation:", state.restaurantId);

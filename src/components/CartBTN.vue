@@ -60,6 +60,14 @@ export default {
                 if (confirm('stai aggiungendo il piatto di un altro ristorante, vuoi svuotare il carrello?')) {
                     this.$store.commit('clearCart'); // Svuota il carrello se l'utente conferma
                     this.$store.commit('addRemoveCart', { dish: this.item, toAdd: this.toAdd });
+
+                    let toastMsg = this.toAdd ? 'Aggiunto al carrello' : 'Rimosso dal carello';
+                    toast(toastMsg, {
+                        autoClose: 1000,
+                        position: 'bottom-right'
+                    });
+
+                    this.toAdd = !this.toAdd;
                     this.confirmDeleteCart = false
                 }
                 return;
