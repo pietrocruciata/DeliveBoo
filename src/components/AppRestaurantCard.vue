@@ -36,7 +36,7 @@ export default {
 
     methods: {
         convertText(inputString) {
-            return inputString.replace("\\uploads", '');
+            return inputString.replace("\\uploads", '').replace("uploads", '');
         },
     }
 
