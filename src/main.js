@@ -6,6 +6,7 @@ import AppRestaurant from './pages/AppRestaurant.vue'
 import AppCart from './pages/AppCart.vue'
 import store from "./store"
 
+
 //INSTALL FONT AWESOM
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'

@@ -16,7 +16,7 @@
 
     <section>
         <div class="container">
-            <div class="my-4 row ">
+            <div class="my-4 row justify-content-center">
                 <strong class="text-center">Tutti i nostri Ristoranti</strong>
                 <div v-if="filteredRestaurants.length === 0">
                     <p>Nessun ristorante corrispondente.</p>

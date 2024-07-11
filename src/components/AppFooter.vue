@@ -1,36 +1,42 @@
 <template>
     <footer>
         <div class="container_info">
-            <div class="row m-0">
-                <div class="company_info col-sm-12 col-md-3">
-                    <img>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, at maiores earum beatae cum ducimus sapiente, aspernatur ad inventore, quisquam in. Nihil harum ipsa veniam voluptatem reprehenderit autem et minima.</p>
-                </div>
-                <div class="company_links col-sm-12 col-md-3">
-                    <h2>Chi siamo</h2>
-                    <ul class="list-unstyled d-flex flex-column">
-                        <li>Luigi</li>
-                        <li>Pietro</li>
-                        <li>Thomas</li>
-                        <li>Giulio</li>
-                        <li>Valerio</li>
-                    </ul>
-                </div>
-                <div class="company_contacts col-sm-12 col-md-3">
-                    <h2>Contatti</h2>
-                    <ul class="list-unstyled d-flex flex-column">
-                        <li>info@deliveboo.com</li>
-                        <li>+99 (0) 101 0000 888</li>
-                    </ul>
-                </div>
-                <div class="company_contacts col-sm-12 col-md-3">
-                    <h2>Social</h2>
-                    <div class="socials d-flex gap-3">
-                        <a href="#"><font-awesome-icon icon="fa-brands fa-facebook-f" /></a>
-                        <a href="#"><font-awesome-icon icon="fa-brands fa-twitter" /></a>
-                        <a href="#"><font-awesome-icon icon="fa-brands fa-pinterest" /></a>
+            <div class="container">
+                <div class="row m-0">
+                    <div class="company_info col-sm-12 col-md-3">
+                        <img>
+                        <p>DeliveBoo - Il tuo cibo preferito, consegnato a casa tua. Scopri i migliori ristoranti della città e ordina con un clic.<br> © 2024 DeliveBoo. Tutti i diritti riservati.</p>
+                    </div>
+                    <div class="company_links col-sm-12 col-md-3">
+                        <h2>Chi siamo</h2>
+                        <ul class="list-unstyled d-flex flex-column">
+                            <li>Luigi</li>
+                            <li>Pietro</li>
+                            <li>Thomas</li>
+                            <li>Giulio</li>
+                            <li>Valerio</li>
+                        </ul>
+                    </div>
+                    <div class="company_contacts col-sm-12 col-md-3">
+                        <h2>Contatti</h2>
+                        <ul class="list-unstyled d-flex flex-column">
+                            <li>info@deliveboo.com</li>
+                            <li>+99 (0) 101 0000 888</li>
+                        </ul>
+                    </div>
+                    <div class="company_contacts col-sm-12 col-md-3">
+                        <h2>Social</h2>
+                        <div class="socials d-flex gap-3">
+                            <a href="#"><font-awesome-icon icon="fa-brands fa-facebook-f" /></a>
+                            <a href="#"><font-awesome-icon icon="fa-brands fa-twitter" /></a>
+                            <a href="#"><font-awesome-icon icon="fa-brands fa-pinterest" /></a>
+                            <a href="#"><font-awesome-icon icon="fa-brands fa-instagram" /></a>
+                            <a href="#"><font-awesome-icon icon="fa-brands fa-whatsapp" /></a>
+                            <a href="#"><font-awesome-icon icon="fa-brands fa-threads" /></a>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </footer>
