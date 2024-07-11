@@ -1,10 +1,10 @@
 <template>
-  <section>
+  <section class="d-flex flex-column section-container">
     <header>
       <AppHeader />
     </header>
 
-    <main>
+    <main class="flex-grow-1">
       <RouterView />
     </main>
     <footer>
@@ -32,5 +32,10 @@ export default {
 </script>
 
 <style lang="scss">
-@use './style/general'
+@use './style/general';
+
+
+.section-container{
+  min-height: 100vh;
+}
 </style>

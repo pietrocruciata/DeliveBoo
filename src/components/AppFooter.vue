@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div class="container_info">
-            <div class="row">
+            <div class="row m-0">
                 <div class="company_info col-sm-12 col-md-3">
                     <img>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, at maiores earum beatae cum ducimus sapiente, aspernatur ad inventore, quisquam in. Nihil harum ipsa veniam voluptatem reprehenderit autem et minima.</p>
