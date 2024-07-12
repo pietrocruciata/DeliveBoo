@@ -68,10 +68,10 @@ export default {
     // width: 300px;
 }
 
-.card-h:hover {
+/*.card-h:hover {
     transform: scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+}*/
 
 .image-h {
     height: 200px;

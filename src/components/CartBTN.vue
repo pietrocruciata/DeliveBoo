@@ -2,17 +2,24 @@
     <div class="d-flex align-items-center mb-4 gap-4 mx-3">
         <button type="button" @click="addOrRemove()" class="btn custom-pill">
             {{ toAdd ? 'Aggiungi' : 'Cancella' }}
-
         </button>
         <CartAddRemove v-if="!toAdd" :dish="item" />
     </div>
+    <div v-if="confirmDeleteCart" class="modal">
+        <div class="modal-content ">
+            <!-- <p>Stai aggiungendo il piatto di un altro ristorante. Vuoi svuotare il
+                carrello?</p> -->
+            <p>Stai cambiando il ristorante. Vuoi aggiungere questo piatto nel carrello?</p>
+            <div class="d-flex gap-3 justify-content-center">
+                <button class="btn-cream" @click="handleClearCart">SI</button>
+                <button class="btn-cream" @click="confirmDeleteCart = false">NO</button>
+            </div>
+        </div>
+    </div>
 </template>
-
 <script>
 import CartAddRemove from './CartAddRemove.vue';
-
 import { toast } from 'vue3-toastify';
-
 export default {
     props: ['dish'],
     components: { CartAddRemove },
@@ -28,36 +35,27 @@ export default {
             if (!this.item.qty) {
                 this.item.qty = 1;
             }
-            console.log("Clicked, Dish:", this.item);
-
-
             if (this.$store.state.restaurantId && this.$store.state.restaurantId !== this.item.restaurant_id && this.toAdd) {
-                if (confirm('stai aggiungendo il piatto di un altro ristorante, vuoi svuotare il carrello?')) {
-                    this.$store.commit('clearCart'); // Svuota il carrello se l'utente conferma
-                    this.$store.commit('addRemoveCart', { dish: this.item, toAdd: this.toAdd });
-
-                    let toastMsg = this.toAdd ? 'Aggiunto al carrello' : 'Rimosso dal carello';
-                    toast(toastMsg, {
-                        autoClose: 1000,
-                        position: 'bottom-right'
-                    });
-
-                    this.toAdd = !this.toAdd;
-                    this.confirmDeleteCart = false
-                }
+                // Show modal instead of using confirm
+                this.confirmDeleteCart = true;
                 return;
             }
-
+            this.updateCart();
+        },
+        handleClearCart() {
+            this.$store.commit('clearCart');
+            this.updateCart();
+            this.confirmDeleteCart = false;
+        },
+        updateCart() {
             this.$store.commit('addRemoveCart', { dish: this.item, toAdd: this.toAdd });
-
             let toastMsg = this.toAdd ? 'Aggiunto al carrello' : 'Rimosso dal carello';
             toast(toastMsg, {
                 autoClose: 1000,
                 position: 'bottom-right'
             });
-
             this.toAdd = !this.toAdd;
-        },
+        }
     },
     mounted() {
         let cart = this.$store.state.cart;
@@ -72,31 +70,41 @@ export default {
     },
 };
 </script>
-
 <style lang="scss" scoped>
-.cart-btn {
-    width: 40px;
-    height: 38px;
-}
+@use '../style/partials/variables' as *;
 
-.rounded-circle {
-    width: 45px;
-    height: 45px;
-    padding: 0;
+/* Style your modal here */
+.modal {
+    background-color: rgba(0, 0, 0, 0.5); 
+    position: fixed;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #FAAF4D;
+    z-index: 1000;
 }
-
-.custom-pill {
-    background-color: #FAAF4D;
-    width: 100px;
-    height: 45px;
-    border-radius: 100px;
+.modal-content {
+    background: $brand-orange;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 300px;
+    text-align: center;
+    color: rgb(238, 238, 238);
+    font-size: 20px;
+}
+.btn-cream {
+    border-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    /* border: 1px solid black; */
+    background-color: #F4EFE7;
+    width: 110px;
+    padding: 10px;
     cursor: pointer;
-    top: 10px;
-    left: 10px;
-    user-select: none;
+    &:hover {
+        border: 1px solid black;
+    }
 }
 </style>
