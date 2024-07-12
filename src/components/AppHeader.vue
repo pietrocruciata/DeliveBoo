@@ -41,14 +41,14 @@
                     <a href="http://127.0.0.1:8000/" target="_blank">Profilo</a>
                 </div>
                 <div>
-                    <router-link class="nav-link" :class="$route.name == 'Cart' ? 'active' : ''" aria-current="page"
+                    <!-- <router-link class="nav-link" :class="$route.name == 'Cart' ? 'active' : ''" aria-current="page"
                         :to="{ name: 'Cart' }">
                         <font-awesome-icon class="chat-icon" :icon="['fas', 'cart-shopping']" />
                         <span v-if="$store.getters.totalQuantity > 0"
                             class="align-items-center justify-content-center translate-middle badge rounded-pill bg-danger badge">
                             {{ $store.getters.totalQuantity }}
                         </span>
-                    </router-link>
+                    </router-link> -->
                 </div>
             </div>
             </div>

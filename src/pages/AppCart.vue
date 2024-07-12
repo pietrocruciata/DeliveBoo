@@ -84,7 +84,7 @@
                                             <div class="d-flex justify-content-between mb-4">
                                                 <p class="mb-2">Totale</p>
                                                 <p class="mb-2"><i class="bi bi-currency-dollar"></i>{{
-                                                    $store.state.cartTotal }} &euro;</p>
+                                                    calcTotal() }} &euro;</p>
                                             </div>
                                             <router-link :to="{ name: 'checkout' }">
                                                 <button type="button" class="btn  btn-custom  btn-block btn-lg">
@@ -117,6 +117,13 @@ export default {
         },
         convertText(inputString) {
             return inputString?.replace("\\uploads", '').replace("uploads", '');
+        },
+        calcTotal() {
+            let tot = 0;
+            this.$store.state.cart.forEach(element => {
+                tot += element.qty * element.price;
+            });
+            return tot;
         },
     },
     mounted() {
