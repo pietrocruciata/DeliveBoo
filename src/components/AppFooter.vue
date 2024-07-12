@@ -10,11 +10,11 @@
                     <div class="company_links col-sm-12 col-md-3">
                         <h2>Chi siamo</h2>
                         <ul class="list-unstyled d-flex flex-column">
-                            <li>Luigi</li>
-                            <li>Pietro</li>
-                            <li>Thomas</li>
-                            <li>Giulio</li>
-                            <li>Valerio</li>
+                            <li><a href=""></a> Luigi</li>
+                            <li><a href="https://github.com/">Pietro</a> </li>
+                            <li><a href=""></a> Thomas</li>
+                            <li><a href="">Giulio</a> </li>
+                            <li><a href=""></a> Valerio</li>
                         </ul>
                     </div>
                     <div class="company_contacts col-sm-12 col-md-3">

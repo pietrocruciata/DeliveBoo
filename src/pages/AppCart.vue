@@ -11,8 +11,8 @@
                                     <template v-if="$store.state.restaurantId">
                                         <h5 class="mb-3"><router-link
                                                 :to="{ name: 'restaurant.show', params: { id: $store.state.restaurantId } }"
-                                                class="text-body"><i
-                                                    class="fas fa-long-arrow-alt-left me-2"></i>Continua a
+                                                class="text-body btn-cream"><i
+                                                    class="fas fa-long-arrow-alt-left me-2 "></i>Continua a
                                                 fare
                                                 acquisti</router-link></h5>
                                     </template>
@@ -148,5 +148,17 @@ img {
     width: 150px;
     height: 100px;
     object-fit: cover;
+}
+.btn-cream {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    // border: 1px solid black;
+    background-color: #F4EFE7;
+     width: fit-content;
+    padding: 10px;
+    cursor: pointer;
+
 }
 </style>
