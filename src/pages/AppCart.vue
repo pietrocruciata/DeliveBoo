@@ -34,7 +34,7 @@
                                     <div v-for="item in $store.state.cart" class="card mb-3 shadow-sm border-0"
                                         :key="item.id">
                                         <div class="card-body">
-                                            <div class="d-sm-flex justify-content-between ">
+                                            <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
                                                 <div class="d-flex flex-row align-items-center ">
                                                     <div>
                                                         <img :src="'http://127.0.0.1:8000/api/download' + convertText(item.image)"
