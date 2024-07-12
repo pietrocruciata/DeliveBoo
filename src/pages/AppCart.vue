@@ -34,8 +34,8 @@
                                     <div v-for="item in $store.state.cart" class="card mb-3 shadow-sm border-0"
                                         :key="item.id">
                                         <div class="card-body">
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex flex-row align-items-center">
+                                            <div class="d-sm-flex justify-content-between ">
+                                                <div class="d-flex flex-row align-items-center ">
                                                     <div>
                                                         <img :src="'http://127.0.0.1:8000/api/download' + convertText(item.image)"
                                                             class="img-fluid rounded-3" alt="Shopping item">

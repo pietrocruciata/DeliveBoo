@@ -5,7 +5,7 @@
     <div class="container ">
         <div>
             <h6 class="text-center my-4"><strong>Scegli per tipologia</strong></h6>
-            <ul class="d-flex gap-5 justify-content-center flex-wrap">
+            <ul class="d-flex gap-5 justify-content-center flex-wrap p-0">
 
                 <TypesComponents v-for="(type, i) in types " :key="i" :item="type" :selectedType="selectedType"
                     @filter="filterByType(type.label, type)"></TypesComponents>

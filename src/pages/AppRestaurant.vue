@@ -6,8 +6,9 @@
                 <div class="row">
 
                     <div class="col-6 ">
-                        <img :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="">
-
+                        <img v-if="restaurant.image" :src="'http://127.0.0.1:8000/api/download' + convertText(restaurant.image)" alt="">
+                        <img v-if="!restaurant.image" src="/img/notfound.png" alt=""
+            class="img-size">
                     </div>
                     <div class="col-6">
                         <div class="card-body  px-2">

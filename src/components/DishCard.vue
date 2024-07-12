@@ -3,6 +3,8 @@
         <div class="card card-h">
             <img v-if="dish.image" class="card-img-top image-h " :src="'http://127.0.0.1:8000/api/download' + convertText(dish.image)"
                 alt="foto">
+                <img v-if="!dish.image" class="card-img-top image-h " src="/img/notfound.png"
+                alt="foto">
             <div class="card-body d-flex flex-column p-2">
                 <div class="d-flex justify-content-between mb-2">
                     <h3 class="m-0 fs-6"> {{ dish.name }}</h3>

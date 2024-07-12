@@ -7,7 +7,8 @@
             <img src="/img/logo.png" alt="" class="font-logo">
         </div>
 
-        <div class="d-none d-md-flex d-flex justify-content-center align-items-center  gap-md-5 gap-3 font-icon c-white ">
+        <div
+            class="d-none d-md-flex d-flex justify-content-center align-items-center  gap-md-5 gap-3 font-icon c-white ">
             <div>
                 <RouterLink to="/"><font-awesome-icon :icon="['fas', 'house']" /></RouterLink>
             </div>
@@ -27,31 +28,34 @@
         </div>
 
         <nav class=" d-md-none d-sm-block">
-            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><font-awesome-icon icon="fa-solid fa-bars" /></button>
+            <button class="btn c-white bg-cream dropdown-toggle hamburger" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <font-awesome-icon :icon="['fas', 'bars']" />
+            </button>
+            <div class="dropdown">
 
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <RouterLink class="dropdown-item" to="/">Home
+                        </RouterLink>
+                    </li>
+                    <li><a class="dropdown-item" href="http://127.0.0.1:8000/" target="_blank">Profilo</a></li>
+                    <li>
+                        <div class="position-relative dropdown-item">
+                            <router-link class="nav-link" :class="$route.name == 'Cart' ? 'active' : ''"
+                                aria-current="page" :to="{ name: 'Cart' }">
+                                Carrello
+                                <span v-if="$store.getters.totalQuantity > 0"
+                                    class="align-items-center justify-content-center translate-middle badge rounded-pill bg-danger dropdown-badge">
+                                    {{ $store.getters.totalQuantity }}
+                                </span>
+                            </router-link>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div class="offcanvas-body">
-                <div>
-                    <RouterLink to="/">Home</RouterLink>
-                </div>
-                <div>
-                    <a href="http://127.0.0.1:8000/" target="_blank">Profilo</a>
-                </div>
-                <div>
-                    <!-- <router-link class="nav-link" :class="$route.name == 'Cart' ? 'active' : ''" aria-current="page"
-                        :to="{ name: 'Cart' }">
-                        <font-awesome-icon class="chat-icon" :icon="['fas', 'cart-shopping']" />
-                        <span v-if="$store.getters.totalQuantity > 0"
-                            class="align-items-center justify-content-center translate-middle badge rounded-pill bg-danger badge">
-                            {{ $store.getters.totalQuantity }}
-                        </span>
-                    </router-link> -->
-                </div>
-            </div>
-            </div>
+
+
         </nav>
     </div>
 
@@ -79,6 +83,9 @@ export default {
     color: $brand-orange
 }
 
+.c-white{
+    color: white;
+}
 
 .button-orange {
     background-color: $brand-orange;
@@ -117,4 +124,21 @@ export default {
     display: flex;
 
 }
+
+.dropdown-badge{
+    position: absolute;
+    top: 17px;
+    left: 95px;
+    height: 25px;
+    width: 25px;
+    display: flex;
+}
+.dropdown-toggle::after {
+    display: none;
+}
+
+.hamburger{
+    font-size: 30px;
+}
+
 </style>
