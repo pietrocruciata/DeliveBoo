@@ -3,7 +3,7 @@
         <form id="payment-form" @submit.prevent="handleSubmit" action='http://127.0.0.1:8000/api/order/make/payment'
             method="post">
             <div class="row">
-                <div class="col-6">
+                <div class="col-sm-6 col">
                     <div class="mb-3">
                         <label for="customer_name" class="form-label">Nome e Cognome: *</label>
                         <input type="text" class="form-control" id="customer_name" name="customer_name"
@@ -33,20 +33,24 @@
                     <!-- Price field with minimum and maximum value restrictions -->
                     <div class="mb-3">
                         <label for="total_price" class="form-label">Totale:</label>
-                        <input type="float" class="form-control" id="total_price" name="total_price"
-                            :value="calcTotal()" required readonly />
+                        <input type="float" class="price" id="total_price" name="total_price"
+                            :value="calcTotal()" required readonly >
                     </div>
                     <!-- Name field with pattern restriction for letters only -->
 
                 </div>
-                <div class="col-6">
+                <div class="col-sm-6 col">
                     <input type="hidden" name="orderData" :value="JSON.stringify($store.state.cart)" />
                     <!-- BRAINTREE DATA -->
                     <input type="hidden" name="amount" :value="calcTotal()" />
                     <input type="hidden" name="token" :value="authorization" />
 
                     <div id="dropin-container"></div>
-                    <button type="submit" class="btn btn-primary mb-2">Effettua il pagamento</button>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary mb-2 align-self-end">Effettua il pagamento</button>
+
+                    </div>
                 </div>
             </div>
 
@@ -127,6 +131,12 @@ input[type="hidden"] {
     background-color: #f8d7da;
     border-color: #f5c6cb;
     color: #721c24;
+}
+
+.price{
+    border: none;
+    background-color: transparent;
+    outline: none;
 }
 </style>
 

@@ -87,7 +87,7 @@
                                                     calcTotal() }} &euro;</p>
                                             </div>
                                             <router-link :to="{ name: 'checkout' }">
-                                                <button type="button" class="btn  btn-custom  btn-block btn-lg">
+                                                <button type="button" class="btn  btn-custom  btn-block btn-lg" v-if="calcTotal() > 0">
                                                     Vai alla cassa
                                                 </button>
                                             </router-link>

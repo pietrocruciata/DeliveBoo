@@ -107,4 +107,15 @@ export default {
         border: 1px solid black;
     }
 }
+
+.custom-pill {
+    background-color: #FAAF4D;
+    width: 100px;
+    height: 45px;
+    border-radius: 100px;
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
+    user-select: none;
+}
 </style>
