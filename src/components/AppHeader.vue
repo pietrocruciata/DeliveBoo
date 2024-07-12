@@ -110,7 +110,11 @@ export default {
 
 .badge {
     position: absolute;
-    top: 37px;
+    top: 33px;
     left: 30px;
+    height: 25px;
+    width: 25px;
+    display: flex;
+
 }
 </style>
