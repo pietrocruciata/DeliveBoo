@@ -32,7 +32,7 @@
 
                     <!-- Price field with minimum and maximum value restrictions -->
                     <div class="mb-3">
-                        <label for="total_price" class="form-label">Totale:</label>
+                        <label for="total_price" class="form-label">Totale: € </label>
                         <input type="float" class="price" id="total_price" name="total_price"
                             :value="calcTotal()" required readonly >
                     </div>
