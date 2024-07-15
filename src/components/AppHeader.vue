@@ -1,6 +1,6 @@
 <template>
 
-    <div class="d-flex bg_cream  p-2  justify-content-around align-items-center">
+    <div class="d-flex bg_cream  py-2 px-4 justify-content-between justify-content-sm-around align-items-center">
 
         <div class="c-orange d-flex">
 
@@ -28,10 +28,15 @@
         </div>
 
         <nav class=" d-md-none d-sm-block">
+           
             <button class="btn c-white bg-cream dropdown-toggle hamburger" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 <font-awesome-icon :icon="['fas', 'bars']" />
             </button>
+            <span v-if="$store.getters.totalQuantity > 0"
+                                    class="align-items-center justify-content-center translate-middle badge rounded-pill bg-danger dropdown-badge-hamburger">
+                                    {{ $store.getters.totalQuantity }}
+                                </span>
             <div class="dropdown">
 
                 <ul class="dropdown-menu">
@@ -139,6 +144,15 @@ export default {
 
 .hamburger{
     font-size: 30px;
+    position: relative;
+}
+.dropdown-badge-hamburger{
+    position: absolute;
+    top: 27px;
+    left: 359px;
+    height: 25px;
+    width: 25px;
+    display: flex;
 }
 
 </style>

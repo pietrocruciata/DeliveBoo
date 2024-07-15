@@ -37,9 +37,13 @@
                                             <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
                                                 <div class="d-flex flex-row align-items-center ">
                                                     <div>
-                                                        <img :src="'http://127.0.0.1:8000/api/download' + convertText(item.image)"
-                                                            class="img-fluid rounded-3" alt="Shopping item">
+                                                        <img v-if="item.image" class="img-fluid rounded-3 "
+                                                            :src="'http://127.0.0.1:8000/api/download' + convertText(item.image)"
+                                                            alt="Shopping item">
+                                                        <img v-if="!item.image" class="img-fluid rounded-3 "
+                                                            src="/img/notfound.png" alt="Shopping item">
                                                     </div>
+                                                    
                                                     <div class="ms-3">
                                                         <p>{{ item.name }}</p>
                                                     </div>
@@ -56,7 +60,7 @@
                                                         <small v-if="item.hasDiscount"
                                                             class="text-muted text-decoration-line-through"><i
                                                                 class="bi bi-currency-dollar"></i>{{
-                                                            item.price }}</small>
+                                                                    item.price }}</small>
                                                     </div>
                                                     <a role="button" @click="removeItem(item)" class="ms-4"
                                                         style="color: #cecece;"><font-awesome-icon
@@ -87,7 +91,8 @@
                                                     calcTotal() }} &euro;</p>
                                             </div>
                                             <router-link :to="{ name: 'checkout' }">
-                                                <button type="button" class="btn  btn-custom  btn-block btn-lg" v-if="calcTotal() > 0">
+                                                <button type="button" class="btn  btn-custom  btn-block btn-lg"
+                                                    v-if="calcTotal() > 0">
                                                     Vai alla cassa
                                                 </button>
                                             </router-link>
@@ -149,6 +154,7 @@ img {
     height: 100px;
     object-fit: cover;
 }
+
 .btn-cream {
     display: flex;
     flex-direction: column;
@@ -156,7 +162,7 @@ img {
     border-radius: 20px;
     // border: 1px solid black;
     background-color: #F4EFE7;
-     width: fit-content;
+    width: fit-content;
     padding: 10px;
     cursor: pointer;
 

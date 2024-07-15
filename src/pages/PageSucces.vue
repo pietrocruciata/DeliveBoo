@@ -16,6 +16,7 @@ export default {
 
 <style scoped>
 .success-container {
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,6 +31,7 @@ export default {
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
 }
 
 .success-message h1 {
