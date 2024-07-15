@@ -10,11 +10,11 @@
                     <div class="company_links col-sm-12 col-md-3">
                         <h2>Chi siamo</h2>
                         <ul class="list-unstyled d-flex flex-column">
-                            <li><a href=""></a> Luigi</li>
-                            <li><a href="https://github.com/">Pietro</a> </li>
-                            <li><a href=""></a> Thomas</li>
-                            <li><a href="">Giulio</a> </li>
-                            <li><a href=""></a> Valerio</li>
+                            <li><a href="https://github.com/LuigiRiva99" target="_blank">Luigi</a></li>
+                            <li><a href="https://github.com/pietrocruciata" target="_blank">Pietro</a></li>
+                            <li><a href="" >Thomas</a></li>
+                            <li><a href="" >Giulio</a></li>
+                            <li><a href="https://github.com/valeriogonini" target="_blank">Valerio</a></li>
                         </ul>
                     </div>
                     <div class="company_contacts col-sm-12 col-md-3">
