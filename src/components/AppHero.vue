@@ -25,12 +25,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.imgBox {
-    height: 400px;
-    object-fit: cover;
-    overflow: hidden;
-}
-
 section {
     position: relative;
 }
@@ -76,6 +70,12 @@ section {
     .slogan {
         width: 85%;
     }
+
+    .imgBox {
+        height: 250px;
+        object-fit: cover;
+        overflow: hidden;
+    }
 }
 
 @media (min-width: 576px) {
@@ -85,6 +85,12 @@ section {
 
     .slogan {
         width: 85%;
+    }
+
+    .imgBox {
+        height: 400px;
+        object-fit: cover;
+        overflow: hidden;
     }
 }
 
