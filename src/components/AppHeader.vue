@@ -3,8 +3,10 @@
     <div class="d-flex bg_cream  py-2 px-4 justify-content-between justify-content-sm-around align-items-center">
 
         <div class="c-orange d-flex">
+            <RouterLink to="/">
 
-            <img src="/img/logo.png" alt="" class="font-logo">
+                <img src="/img/logo.png" alt="" class="font-logo">
+            </RouterLink>
         </div>
 
         <div
